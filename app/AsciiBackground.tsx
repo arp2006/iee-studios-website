@@ -64,7 +64,7 @@ export default function AsciiBackground() {
       text-[14px]
       leading-[1.2]
       whitespace-pre
-      text-black/[0.035]
+      text-black/[0.07]
       "
     >
       {ascii}
