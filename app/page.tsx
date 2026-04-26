@@ -445,10 +445,10 @@ export default function Home() {
     border border-black/5 px-6 py-5 pr-14
     outline-none focus:border-black/20"
                 >
-                  <option>What's your Budget?</option>
-                  <option>$2k–5k</option>
-                  <option>$5k–10k</option>
-                  <option>$10k+</option>
+                  <option className="text-black/60">What's your Budget?</option>
+                  <option>Under $4000</option>
+                  <option>$4000-$6000</option>
+                  <option>$6000-$10000+ (With Shooting)</option>
                 </select>
 
                 <div className="pointer-events-none absolute inset-y-0 right-6 flex items-center text-black/35">
