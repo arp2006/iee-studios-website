@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { HiOutlineMail } from "react-icons/hi";
 import { RiTwitterXFill } from "react-icons/ri";
 import Lenis from "lenis";
+import AsciiBackground from "./AsciiBackground";
 
 const CALENDLY = "https://calendly.com/iee-studios/30-mins-meeting";
 
@@ -162,7 +163,8 @@ export default function Home() {
   return (
     <main className="relative min-h-screen bg-white text-black">
       <DotGrid />
-      <GrainOverlay />
+      <AsciiBackground />
+      {/* <GrainOverlay /> */}
       <Script src="https://fast.wistia.com/player.js" strategy="lazyOnload" />
 
       {/* ════════════════════════════════════════════
