@@ -484,14 +484,14 @@ export default function Home() {
 
           <div className="mt-14 flex flex-col gap-8 md:mt-20 md:flex-row md:items-end md:justify-between">
             <div className="flex flex-col gap-4">
-              <a
+              {/* <a
                 href={CALENDLY}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex w-fit items-center gap-3 rounded-full bg-black px-8 py-4 text-[14px] font-medium text-white transition-colors duration-300 hover:bg-black/80"
               >
                 Book a Call
-              </a>
+              </a> */}
               <div className="flex items-center gap-5 pt-2">
                 <a
                   href="mailto:inspireelevateevovle@gmail.com"
