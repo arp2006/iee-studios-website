@@ -137,6 +137,18 @@ export default function Home() {
   const [showNav, setShowNav] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [smallNav, setSmallNav] = useState(false);
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    budget: "",
+    project: ""
+  });
+
+  const isValid =
+    form.name &&
+    form.email &&
+    form.budget &&
+    form.project;
 
   useEffect(() => {
     const lenis = new Lenis({ lerp: 0.8, smoothWheel: true });
@@ -153,7 +165,7 @@ export default function Home() {
       const y = window.scrollY;
 
       setShowNav(y > 500);
-      setSmallNav(y > 800);
+      setSmallNav(y > 1000);
     };
 
     window.addEventListener("scroll", onScroll);
@@ -494,57 +506,120 @@ export default function Home() {
 
             {/* Form */}
             <form className="space-y-5">
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="w-full rounded-2xl bg-black/[0.03] px-6 py-5 outline-none border border-black/5 focus:border-black/20"
-              />
 
               <input
-                type="email"
-                placeholder="Email Address"
-                className="w-full rounded-2xl bg-black/[0.03] px-6 py-5 outline-none border border-black/5 focus:border-black/20"
+                name="name"
+                value={form.name}
+                onChange={(e) =>
+                  setForm({ ...form, name: e.target.value })
+                }
+                placeholder="Your Name"
+                className="w-full rounded-2xl bg-neutral-50 px-6 py-5 border border-black/10 outline-none"
               />
+
+
+              <input
+                name="email"
+                type="email"
+                value={form.email}
+                onChange={(e) =>
+                  setForm({ ...form, email: e.target.value })
+                }
+                placeholder="Email Address"
+                className="w-full rounded-2xl bg-neutral-50 px-6 py-5 border border-black/10 outline-none"
+              />
+
 
               <div className="relative">
                 <select
-                  className="w-full appearance-none rounded-2xl bg-black/[0.03]
-    border border-black/5 px-6 py-5 pr-14
-    outline-none focus:border-black/20"
+                  name="budget"
+                  value={form.budget}
+                  onChange={(e) =>
+                    setForm({ ...form, budget: e.target.value })
+                  }
+                  className="w-full appearance-none rounded-2xl bg-neutral-50 border border-black/10 px-6 py-5 pr-14"
                 >
-                  <option className="text-black/60">What's your Budget?</option>
+                  <option value="">
+                    What's your Budget?
+                  </option>
                   <option>Under $4000</option>
                   <option>$4000-$6000</option>
-                  <option>$6000-$10000+ (With Shooting)</option>
+                  <option>$6000-$10000+</option>
                 </select>
 
                 <div className="pointer-events-none absolute inset-y-0 right-6 flex items-center text-black/35">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M6 9l6 6 6-6" />
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M6 9l6 6 6-6"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                   </svg>
                 </div>
               </div>
 
+
               <textarea
+                name="project"
                 rows={6}
+                value={form.project}
+                onChange={(e) =>
+                  setForm({ ...form, project: e.target.value })
+                }
                 placeholder="Describe Your Project"
-                className="w-full rounded-2xl bg-black/[0.03] px-6 py-5 outline-none border border-black/5 resize-none"
+                className="w-full rounded-2xl bg-neutral-50 px-6 py-5 border border-black/10 resize-none"
               />
 
-              <button
-                className="w-full rounded-2xl bg-black text-white py-5 font-medium hover:bg-black/85 transition"
-              >
-                Send Inquiry
-              </button>
+
+              <div className="relative group">
+
+                <button
+                  type="submit"
+                  disabled={!isValid}
+                  className={`
+      w-full rounded-2xl py-5 font-medium transition
+      ${isValid
+                      ? "bg-black text-white hover:bg-black/85"
+                      : "bg-black/10 text-black/30 cursor-not-allowed"
+                    }
+    `}
+                >
+                  Send Inquiry
+                </button>
+
+
+                {!isValid && (
+                  <div
+                    className="
+      pointer-events-none
+      absolute
+      left-1/2 -translate-x-1/2
+      -top-14
+
+      rounded-full
+      bg-black
+      shadow-lg
+      text-white
+      text-[12px]
+      tracking-[0.02em]
+
+      px-4 py-2
+
+      opacity-0
+      scale-95
+      group-hover:opacity-100
+      group-hover:scale-100
+      transition-all duration-300
+      "
+                  >
+                    Complete inquiry to continue
+                  </div>
+                )}
+
+              </div>
+
             </form>
 
           </div>
@@ -559,15 +634,22 @@ export default function Home() {
               >
                 Book a Call
               </a> */}
-              <motion.h2
-                className="text-[clamp(3rem,10vw,10rem)] font-semibold leading-[0.9] tracking-[-0.04em] text-black"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.8, ease }}
-              >
-                IEE Studios
-              </motion.h2>
+              <div className="space-y-4">
+                <p className="text-[11px] uppercase tracking-[0.35em] text-black/30">
+                  Creative Direction • Launch Films
+                </p>
+
+                <motion.h2
+                  className="
+text-[clamp(2rem,3vw,4rem)]
+font-medium
+tracking-[-0.03em]
+text-black/50
+"
+                >
+                  iee Studios
+                </motion.h2>
+              </div>
               <div className="flex items-center gap-5 pt-2">
                 <a
                   href="mailto:inspireelevateevovle@gmail.com"
