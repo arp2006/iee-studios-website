@@ -133,8 +133,9 @@ function GrainOverlay() {
 /* ─── Page ─── */
 
 export default function Home() {
-  /* Lenis smooth scroll */
   const [showNav, setShowNav] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [smallNav, setSmallNav] = useState(false);
 
   useEffect(() => {
     const lenis = new Lenis({ lerp: 0.8, smoothWheel: true });
@@ -148,7 +149,10 @@ export default function Home() {
 
   useEffect(() => {
     const onScroll = () => {
-      setShowNav(window.scrollY > 500);
+      const y = window.scrollY;
+
+      setShowNav(y > 500);
+      setSmallNav(y > 800);
     };
 
     window.addEventListener("scroll", onScroll);
@@ -170,31 +174,47 @@ export default function Home() {
           {showNav && (
             <motion.nav
               initial={{ opacity: 0, y: -30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.45 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                width: smallNav ? "520px" : "900px",
+                paddingTop: smallNav ? "12px" : "16px",
+                paddingBottom: smallNav ? "12px" : "16px"
+              }}
+              transition={{
+                duration: .45,
+                ease: [0.25, 0.1, 0.25, 1]
+              }}
               className="
-    fixed top-6 left-1/2 -translate-x-1/2
-    z-50
-    w-[min(92%,900px)]
-    rounded-full
-    border border-black/10
-    bg-white/80
-    backdrop-blur-xl
-    shadow-sm
-    px-6 md:px-8
-    py-4
-    flex items-center justify-between
-  "
+ fixed top-6 left-1/2 -translate-x-1/2
+ z-[9999]
+ rounded-full
+ border border-black/10
+ bg-white/80
+ backdrop-blur-xl
+ shadow-sm
+ px-6 md:px-8
+ flex items-center justify-between
+ "
             >
-              <span className="text-[11px] font-medium uppercase tracking-[0.25em]">
+              <motion.span
+                className="text-[11px] font-medium uppercase tracking-[0.25em]"
+                animate={{
+                  letterSpacing: smallNav ? "0.18em" : "0.25em",
+                  opacity: smallNav ? .7 : 1
+                }}
+              >
                 IEE Studios
-              </span>
+              </motion.span>
 
-              <a
+              <motion.a
                 href={CALENDLY}
                 target="_blank"
                 rel="noopener noreferrer"
+                animate={{
+                  paddingLeft: smallNav ? 18 : 24,
+                  paddingRight: smallNav ? 18 : 24
+                }}
                 className="
       rounded-full
       bg-black
@@ -206,7 +226,7 @@ export default function Home() {
     "
               >
                 Book a Call
-              </a>
+              </motion.a>
             </motion.nav>
           )}
         </AnimatePresence>
@@ -254,7 +274,7 @@ export default function Home() {
             </a>
             <a
               href="#work"
-              className="inline-flex items-center gap-1 text-[14px] font-medium text-black/40 transition-colors duration-300 hover:text-black"
+              className="inline-flex items-center gap-1 text-[14px] font-medium text-black/60 transition-colors duration-300 hover:text-black"
             >
               View Selected Work
             </a>
@@ -369,26 +389,80 @@ export default function Home() {
             Frequently Asked
           </motion.h2>
 
-          <div className="space-y-0">
+          <div>
             {faqs.map((faq, i) => (
-              <motion.details
+              <motion.div
                 key={i}
-                className="group border-t border-black/10 last:border-b"
+                className="border-t border-black/10 last:border-b"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: i * 0.08, ease }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
               >
-                <summary className="flex cursor-pointer items-center justify-between py-7 text-[17px] font-medium tracking-[-0.01em] md:py-9 md:text-[19px]">
-                  {faq.question}
-                  <span className="ml-4 text-[20px] text-black/30 transition-transform duration-300 group-open:rotate-45">
-                    +
+
+                <motion.button
+                  onClick={() =>
+                    setOpenFaq(openFaq === i ? null : i)
+                  }
+                  whileHover={{ x: 6 }}
+                  transition={{
+                    duration: 0.25,
+                    ease: [0.25, 0.1, 0.25, 1]
+                  }}
+                  className="
+    w-full
+    flex items-center justify-between
+    py-8
+    text-left
+  "
+                >
+                  <span className="text-[19px] font-medium tracking-[-0.01em]">
+                    {faq.question}
                   </span>
-                </summary>
-                <p className="pb-8 pr-12 text-[15px] leading-[1.75] text-black/50 md:text-[16px]">
-                  {faq.answer}
-                </p>
-              </motion.details>
+
+                  <motion.span
+                    animate={{
+                      rotate: openFaq === i ? 45 : 0
+                    }}
+                    transition={{ duration: .3 }}
+                    className="text-black/30 text-2xl"
+                  >
+                    +
+                  </motion.span>
+                </motion.button>
+
+
+                <AnimatePresence>
+                  {openFaq === i && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{
+                        duration: .45,
+                        ease: [0.25, 0.1, 0.25, 1]
+                      }}
+                      className="overflow-hidden"
+                    >
+                      <motion.p
+                        initial={{ y: 12, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: 8, opacity: 0 }}
+                        transition={{ duration: .35 }}
+                        className="
+              pb-8 pr-12
+              text-[16px]
+              leading-[1.75]
+              text-black/50
+            "
+                      >
+                        {faq.answer}
+                      </motion.p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+              </motion.div>
             ))}
           </div>
         </div>
@@ -399,15 +473,6 @@ export default function Home() {
          ════════════════════════════════════════════ */}
       <footer className="relative z-1 border-t border-black/10 px-6 py-20 md:px-12 md:py-28 lg:px-20">
         <div className="mx-auto max-w-[1440px]">
-          <motion.h2
-            className="text-[clamp(3rem,10vw,10rem)] font-semibold leading-[0.9] tracking-[-0.04em] text-black"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, ease }}
-          >
-            IEE Studios
-          </motion.h2>
 
           <div className="mt-16 grid gap-16 lg:grid-cols-2 items-start">
 
@@ -492,6 +557,15 @@ export default function Home() {
               >
                 Book a Call
               </a> */}
+              <motion.h2
+                className="text-[clamp(3rem,10vw,10rem)] font-semibold leading-[0.9] tracking-[-0.04em] text-black"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.8, ease }}
+              >
+                IEE Studios
+              </motion.h2>
               <div className="flex items-center gap-5 pt-2">
                 <a
                   href="mailto:inspireelevateevovle@gmail.com"
