@@ -2,11 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import Script from "next/script";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import { HiOutlineMail } from "react-icons/hi";
 import { RiTwitterXFill } from "react-icons/ri";
 import Lenis from "lenis";
-import AsciiBackground from "./AsciiBackground";
+import AsciiBackground from "./components/AsciiBackground";
+import HorizontalWork from "./components/HorizontalWork";
 
 const CALENDLY = "https://calendly.com/iee-studios/30-mins-meeting";
 
@@ -17,8 +18,8 @@ const projects = [
   { title: "Signal", client: "Vertex Labs", type: "Brand Campaign", year: "2025", bg: "#dedede", colSpan: "lg:col-span-5", aspect: "4 / 5" },
   { title: "Basalt Furniture Launch Film", client: "Basalt", type: "Product Launch Film", year: "2025", bg: "#e2e2e2", colSpan: "lg:col-span-5", aspect: "16 / 9", wistiaId: "s206p4dfom" },
   { title: "Construct", client: "Onyx Cloud", type: "Product Reveal", year: "2024", bg: "#d8d8d8", colSpan: "lg:col-span-7", aspect: "16 / 10" },
-  { title: "Meridian", client: "Atlas Systems", type: "Brand Story", year: "2024", bg: "#e0e0e0", colSpan: "lg:col-span-8", aspect: "16 / 9" },
-  { title: "Epoch", client: "Nova Platform", type: "Launch Spot", year: "2023", bg: "#d4d4d4", colSpan: "lg:col-span-4", aspect: "3 / 4" },
+  // { title: "Meridian", client: "Atlas Systems", type: "Brand Story", year: "2024", bg: "#e0e0e0", colSpan: "lg:col-span-8", aspect: "16 / 9" },
+  // { title: "Epoch", client: "Nova Platform", type: "Launch Spot", year: "2023", bg: "#d4d4d4", colSpan: "lg:col-span-4", aspect: "3 / 4" },
 ];
 
 const faqs = [
@@ -134,6 +135,7 @@ function GrainOverlay() {
 /* ─── Page ─── */
 
 export default function Home() {
+  const lenisRef = useRef<Lenis | null>(null);
   const [showNav, setShowNav] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [smallNav, setSmallNav] = useState(false);
@@ -151,13 +153,24 @@ export default function Home() {
     form.project;
 
   useEffect(() => {
-    const lenis = new Lenis({ lerp: 0.8, smoothWheel: true });
+
+    const lenis = new Lenis({
+      duration: 1.3,
+      smoothWheel: true,
+      wheelMultiplier: .85
+    });
+
+    lenisRef.current = lenis;
+
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
+
     requestAnimationFrame(raf);
+
     return () => lenis.destroy();
+
   }, []);
 
   useEffect(() => {
@@ -165,7 +178,7 @@ export default function Home() {
       const y = window.scrollY;
 
       setShowNav(y > 500);
-      setSmallNav(y > 1000);
+      setSmallNav(y > 900);
     };
 
     window.addEventListener("scroll", onScroll);
@@ -182,7 +195,7 @@ export default function Home() {
       {/* ════════════════════════════════════════════
           HERO SECTION — centered
          ════════════════════════════════════════════ */}
-      <section className="relative z-10 flex min-h-screen flex-col">
+      <section className="relative overflow-hidden z-10 flex min-h-screen flex-col pt-24">
         {/* Navigation */}
         <AnimatePresence>
           {showNav && (
@@ -246,7 +259,7 @@ export default function Home() {
         </AnimatePresence>
 
         {/* Centered Hero Content */}
-        <div className="flex flex-1 flex-col items-center justify-center px-6 pb-24 text-center">
+        <div className="flex flex-1 flex-col items-center justify-center px-6 pb-24 text-center z-10">
           <motion.h1
             className="text-[clamp(2.6rem,5.5vw,5.5rem)] font-semibold leading-[1.05] tracking-[-0.03em]"
             initial={{ opacity: 0, y: 30 }}
@@ -286,17 +299,31 @@ export default function Home() {
             >
               Book a Call
             </a>
-            <a
-              href="#work"
-              className="inline-flex items-center gap-1 text-[14px] font-medium text-black/60 transition-colors duration-300 hover:text-black"
+            <button
+              onClick={() =>
+                lenisRef.current?.scrollTo(
+                  "#work",
+                  {
+                    offset: -80,
+                    duration: 1.8
+                  }
+                )
+              }
+              className="
+inline-flex items-center gap-1
+text-[14px] font-medium
+text-black/40
+transition-colors
+hover:text-black
+"
             >
               View Selected Work
-            </a>
+            </button>
           </motion.div>
         </div>
 
         {/* Section Divider */}
-        <div className="px-6 md:px-12 lg:px-20">
+        <div className="px-6 md:px-12 lg:px-16">
           <div className="h-px bg-black/10" />
         </div>
       </section>
@@ -304,95 +331,14 @@ export default function Home() {
       {/* ════════════════════════════════════════════
           WORK SECTION
          ════════════════════════════════════════════ */}
-      <section
-        id="work"
-        className="relative z-1 px-6 pt-28 pb-32 md:px-12 md:pt-36 md:pb-44 lg:px-20"
-      >
-        <div className="mx-auto max-w-[1440px]">
-          {/* Section Header */}
-          <div className="mb-16 md:mb-24">
-            <motion.h2
-              className="text-4xl font-medium tracking-[-0.03em] md:text-5xl lg:text-6xl"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease }}
-            >
-              Selected Work
-            </motion.h2>
-          </div>
 
-          {/* Thin decorative line */}
-          <div className="mb-16 h-px bg-black/10 md:mb-20" />
-
-          {/* Project Grid */}
-          <div className="grid grid-cols-1 gap-x-6 gap-y-14 md:gap-x-8 md:gap-y-20 lg:grid-cols-12">
-            {projects.map((project, i) => (
-              <motion.article
-                key={project.title}
-                className={`col-span-1 ${project.colSpan} group cursor-pointer`}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{
-                  duration: 0.7,
-                  delay: i % 2 === 0 ? 0 : 0.1,
-                  ease,
-                }}
-              >
-                <motion.div
-                  className="overflow-hidden rounded-[6px]"
-                  whileHover={{ scale: 1.04, y: -8 }}
-                  transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
-                >
-                  <div
-                    className="relative w-full"
-                    style={{
-                      aspectRatio: project.aspect,
-                      backgroundColor: project.bg,
-                    }}
-                  >
-                    {"wistiaId" in project && project.wistiaId && (
-                      <>
-                        <Script
-                          src={`https://fast.wistia.com/embed/${project.wistiaId}.js`}
-                          strategy="lazyOnload"
-                        />
-                        {/* @ts-expect-error wistia-player is a web component */}
-                        <wistia-player
-                          media-id={project.wistiaId}
-                          aspect={project.aspect === "16 / 9" ? "1.7777777777777777" : "1.6"}
-                          style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
-                        />
-                      </>
-                    )}
-                  </div>
-                </motion.div>
-
-                <div className="mt-5 flex items-baseline justify-between">
-                  <div>
-                    <h3 className="text-[17px] font-medium tracking-[-0.01em] transition-opacity duration-300 group-hover:opacity-70">
-                      {project.title}
-                    </h3>
-                    <p className="mt-1.5 text-[13px] tracking-[0.01em] text-black/40">
-                      {project.client} — {project.type}
-                    </p>
-                  </div>
-                  <span className="hidden text-[12px] text-black/30 md:block">
-                    {project.year}
-                  </span>
-                </div>
-              </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HorizontalWork projects={projects} />
 
       {/* ════════════════════════════════════════════
           FAQ SECTION
          ════════════════════════════════════════════ */}
-      <section className="relative z-1 px-6 pt-28 pb-32 md:px-12 md:pt-36 md:pb-44 lg:px-20">
-        <div className="mx-auto max-w-[1440px]">
+      <section className="relative z-1 px-6 pt-28 pb-32 md:px-12 md:pt-36 md:pb-44 lg:px-16">
+        <div className="mx-auto max-w-[1200px]">
           <motion.h2
             className="mb-16 text-4xl font-medium tracking-[-0.03em] md:mb-24 md:text-5xl lg:text-6xl"
             initial={{ opacity: 0, y: 30 }}
@@ -485,8 +431,8 @@ export default function Home() {
       {/* ════════════════════════════════════════════
           FOOTER
          ════════════════════════════════════════════ */}
-      <footer className="relative z-1 border-t border-black/10 px-6 py-20 md:px-12 md:py-28 lg:px-20">
-        <div className="mx-auto max-w-[1440px]">
+      <footer className="relative z-1 border-t border-black/10 px-6 py-20 md:px-12 md:py-28 lg:px-16">
+        <div className="mx-auto max-w-[1200px]">
 
           <div className="mt-16 grid gap-16 lg:grid-cols-2 items-start">
 
@@ -647,7 +593,7 @@ tracking-[-0.03em]
 text-black/50
 "
                 >
-                  iee Studios
+                  iee studios
                 </motion.h2>
               </div>
               <div className="flex items-center gap-5 pt-2">
