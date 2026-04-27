@@ -42,7 +42,7 @@ export default function HorizontalWork({
   const x = useTransform(
     scrollYProgress,
     [0, 1],
-    ["0%", "-300%"]
+    ["0%", "-75%"]
   );
 
   /* Mobile fallback */
@@ -106,7 +106,7 @@ export default function HorizontalWork({
     <section
       id="work"
       ref={ref}
-      className="relative h-[600vh]"
+      className="relative h-[320vh]"
     >
       <div className="sticky top-0 h-screen overflow-hidden bg-white">
 
