@@ -34,6 +34,17 @@ export default function HorizontalWork({
     };
   }, []);
 
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end end"],
+  });
+
+  const x = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["0%", "-300%"]
+  );
+
   /* Mobile fallback */
   if (mobile) {
     return (
@@ -89,16 +100,7 @@ export default function HorizontalWork({
 
   /* Desktop horizontal reel */
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end end"],
-  });
-
-  const x = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ["0%", "-300%"]
-  );
+  
 
   return (
     <section

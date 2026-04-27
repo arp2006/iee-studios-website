@@ -490,7 +490,7 @@ hover:text-black
                   onChange={(e) =>
                     setForm({ ...form, budget: e.target.value })
                   }
-                  className="w-full appearance-none rounded-2xl bg-neutral-50 border border-black/10 px-6 py-5 pr-14"
+                  className="w-full appearance-none rounded-2xl bg-neutral-50 border border-black/10 px-6 py-5 pr-14 outline-none"
                 >
                   <option value="">
                     What's your Budget?
@@ -522,7 +522,7 @@ hover:text-black
                   setForm({ ...form, project: e.target.value })
                 }
                 placeholder="Describe Your Project"
-                className="w-full rounded-2xl bg-neutral-50 px-6 py-5 border border-black/10 resize-none"
+                className="w-full rounded-2xl bg-neutral-50 px-6 py-5 border border-black/10 resize-none outline-none"
               />
 
 
@@ -532,12 +532,12 @@ hover:text-black
                   type="submit"
                   disabled={!isValid}
                   className={`
-      w-full rounded-2xl py-5 font-medium transition
-      ${isValid
+                    w-full rounded-2xl py-5 font-medium transition
+                    ${isValid
                       ? "bg-black text-white hover:bg-black/85"
                       : "bg-black/10 text-black/30 cursor-not-allowed"
                     }
-    `}
+                  `}
                 >
                   Send Inquiry
                 </button>
