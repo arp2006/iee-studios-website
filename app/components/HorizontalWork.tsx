@@ -40,16 +40,13 @@ export default function HorizontalWork({
 
       <div className="sticky top-0 h-screen overflow-hidden bg-white">
 
-        <div className="
-absolute top-16 left-6 md:left-12 lg:left-20
-z-20
-">
+        <div className="absolute top-16 left-6 md:left-12 lg:left-86 z-20 ">
           <h2 className="
 text-4xl md:text-6xl lg:text-7xl
 tracking-[-0.04em]
 font-medium
 ">
-            Selected Work
+            Case Studies
           </h2>
         </div>
 

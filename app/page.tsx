@@ -200,29 +200,37 @@ export default function Home() {
         <AnimatePresence>
           {showNav && (
             <motion.nav
-              initial={{ opacity: 0, y: -30 }}
+              initial={{
+                opacity: 0,
+                y: -30
+              }}
               animate={{
                 opacity: 1,
                 y: 0,
                 width: smallNav ? "520px" : "900px",
-                paddingTop: smallNav ? "12px" : "16px",
-                paddingBottom: smallNav ? "12px" : "16px"
+                paddingTop: smallNav ? "12px" : "20px",
+                paddingBottom: smallNav ? "12px" : "16px",
+
+                // centered -> shifts right while shrinking
+                left: smallNav ? "72%" : "50%"
               }}
               transition={{
-                duration: .45,
+                duration: 0.55,
                 ease: [0.25, 0.1, 0.25, 1]
               }}
               className="
- fixed top-6 left-1/2 -translate-x-1/2
- z-[9999]
- rounded-full
- border border-black/10
- bg-white/80
- backdrop-blur-xl
- shadow-sm
- px-6 md:px-8
- flex items-center justify-between
- "
+fixed top-14
+left-1/2
+-translate-x-1/2
+z-[9999]
+rounded-full
+border border-black/10
+bg-white/80
+backdrop-blur-xl
+shadow-sm
+px-6 md:px-8
+flex items-center justify-between
+"
             >
               <motion.span
                 className="text-[11px] font-medium uppercase tracking-[0.25em]"
@@ -243,14 +251,13 @@ export default function Home() {
                   paddingRight: smallNav ? 18 : 24
                 }}
                 className="
-      rounded-full
-      bg-black
-      px-6 py-3
-      text-[13px]
-      text-white
-      transition
-      hover:bg-black/85
-    "
+rounded-full
+bg-black
+px-6 py-3
+text-[13px]
+text-white
+hover:bg-black/85
+"
               >
                 Book a Call
               </motion.a>
@@ -317,7 +324,7 @@ transition-colors
 hover:text-black
 "
             >
-              View Selected Work
+              View Case Studies
             </button>
           </motion.div>
         </div>
