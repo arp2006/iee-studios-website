@@ -9,7 +9,7 @@ import AsciiBackground from "./components/background/AsciiBackground";
 import HorizontalWork from "./components/ui/HorizontalWork";
 import Footer from "./components/layout/Footer";
 import FAQSection from "./components/ui/FAQSection";
-import Hero from "./components/ui/Hero";
+import Hero from "./components/layout/Hero";
 
 const CALENDLY = "https://calendly.com/iee-studios/30-mins-meeting";
 
