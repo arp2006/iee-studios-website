@@ -32,10 +32,10 @@ export default function FAQSection() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <section className="relative z-1 px-6 pt-28 pb-32 md:px-12 md:pt-36 md:pb-44 lg:px-16">
+    <section className="relative z-1 px-6 pt-28 pb-32 md:px-12 md:pt-36 md:pb-20 lg:px-16">
       <div className="mx-auto max-w-[1200px]">
         <motion.h2
-          className="mb-16 text-4xl font-medium tracking-[-0.03em] md:mb-24 md:text-5xl lg:text-6xl"
+          className="mb-16 text-4xl font-medium tracking-[-0.03em] md:mb-12 md:text-5xl lg:text-6xl"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
