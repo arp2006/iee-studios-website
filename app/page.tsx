@@ -10,6 +10,7 @@ import HorizontalWork from "./components/ui/HorizontalWork";
 import Footer from "./components/layout/Footer";
 import FAQSection from "./components/ui/FAQSection";
 import Hero from "./components/layout/Hero";
+import Navbar from "./components/ui/Navbar";
 
 const CALENDLY = "https://calendly.com/iee-studios/30-mins-meeting";
 
@@ -69,13 +70,15 @@ export default function Home() {
   return (
     <main className="relative min-h-screen bg-white text-black">
 
-      <AsciiBackground />
-      
       <Script src="https://fast.wistia.com/player.js" strategy="lazyOnload" />
-      
-      <Hero
+
+      <Navbar
         showNav={showNav}
         smallNav={smallNav}
+        CALENDLY={CALENDLY}
+      />
+
+      <Hero
         CALENDLY={CALENDLY}
         lenisRef={lenisRef}
       />

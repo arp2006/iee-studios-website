@@ -22,7 +22,6 @@ export default function RootLayout({
         className={`${geist.className} antialiased`}
         style={{ background: "#fff" }}
       >
-        <DotCursor />
         {children}
       </body>
     </html>

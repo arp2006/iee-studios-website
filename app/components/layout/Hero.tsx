@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import Navbar from "../ui/Navbar";
 
 type HeroProps = {
-  showNav: boolean;
-  smallNav: boolean;
   CALENDLY: string;
   lenisRef: React.RefObject<any>;
 };
@@ -13,24 +11,16 @@ type HeroProps = {
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
 export default function Hero({
-  showNav,
-  smallNav,
   CALENDLY,
   lenisRef,
 }: HeroProps) {
   return (
     <section className="relative z-10 flex min-h-screen flex-col overflow-hidden pt-24">
-      
-      <Navbar
-        showNav={showNav}
-        smallNav={smallNav}
-        CALENDLY={CALENDLY}
-      />
 
       <div className="z-10 flex flex-1 flex-col items-center justify-center px-6 pb-24 text-center">
         <motion.h1
           className="
-            text-[clamp(2.6rem,5.5vw,5.5rem)]
+            text-[clamp(2.1rem,4.5vw,4.6rem)]
             font-semibold leading-[1.05]
             tracking-[-0.03em]
           "
@@ -43,7 +33,7 @@ export default function Hero({
         >
           Exclusive Launch Films
           <br />
-          <span className="text-black/40">
+          <span className="text-black">
             for Tech & SaaS
           </span>
         </motion.h1>
@@ -106,7 +96,7 @@ export default function Hero({
             }
             className="
               inline-flex items-center gap-1
-              text-[14px] font-medium
+              text-[14px] font-medium cursor-pointer
               text-black/40 hover:text-black
             "
           >

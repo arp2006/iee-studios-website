@@ -68,7 +68,7 @@ export default function FAQSection() {
                 }}
                 className="
                   flex w-full items-center justify-between
-                  py-8 text-left
+                  py-8 text-left cursor-pointer
                 "
               >
                 <span className="text-[19px] font-medium tracking-[-0.01em]">

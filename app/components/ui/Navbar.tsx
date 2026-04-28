@@ -26,9 +26,9 @@ export default function Navbar({
           animate={{
             opacity: 1,
             y: 0,
-            width: smallNav ? "520px" : "900px",
-            paddingTop: smallNav ? "12px" : "20px",
-            paddingBottom: smallNav ? "12px" : "16px",
+            width: smallNav ? "240px" : "900px",
+            paddingTop: smallNav ? "12px" : "18px",
+            paddingBottom: smallNav ? "12px" : "18px",
             left: smallNav ? "72%" : "50%",
           }}
           transition={{
@@ -37,18 +37,53 @@ export default function Navbar({
           }}
           className="
             fixed top-14 left-1/2 z-[9999]
+            -translate-x-1/2
             flex items-center justify-between
-            rounded-full border border-black/10
-            bg-white/80 px-6 shadow-sm
-            backdrop-blur-xl -translate-x-1/2
-            md:px-8
+            px-3 md:px-5
+            rounded-full
+
+            bg-white/[0.08]
+            backdrop-blur-2xl
+
+            border border-black/30
+            shadow-[0_8px_40px_rgba(0,0,0,0.06)]
           "
         >
+          {/* glass highlight */}
+          <div
+            className="
+              pointer-events-none
+              absolute inset-0 rounded-full
+              bg-gradient-to-b
+              from-white/35
+              via-white/10
+              to-white/[0.03]
+            "
+          />
+
+          {/* subtle inner shine */}
+          <div
+            className="
+              pointer-events-none
+              absolute inset-[1px] rounded-full
+              border border-white/20
+            "
+          />
+
           <motion.span
-            className="text-[11px] font-medium uppercase tracking-[0.25em]"
+            className="
+              relative z-10
+              text-[11px]
+              font-medium
+              uppercase
+              tracking-[0.25em]
+              text-black/80
+            "
             animate={{
-              letterSpacing: smallNav ? "0.18em" : "0.25em",
-              opacity: smallNav ? 0.7 : 1,
+              letterSpacing: smallNav
+                ? "0.18em"
+                : "0.25em",
+              opacity: smallNav ? 0.75 : 1,
             }}
           >
             IEE Studios
@@ -63,9 +98,21 @@ export default function Navbar({
               paddingRight: smallNav ? 18 : 24,
             }}
             className="
-              rounded-full bg-black
-              px-6 py-3 text-[13px]
-              text-white hover:bg-black/85
+              relative z-10
+              rounded-full
+              border border-white/20
+              bg-black/90
+              backdrop-blur-xl
+
+              px-6 py-3
+              text-[13px]
+              text-white
+
+              transition-all duration-500
+              hover:bg-black/80
+              hover:scale-[1.02]
+
+              shadow-[inset_0_1px_0_rgba(255,255,255,0.15)]
             "
           >
             Book a Call
