@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
+import DotCursor from "./components/cursor/DotCursor";
 
 const geist = Geist({ subsets: ["latin"] });
 
@@ -21,6 +22,7 @@ export default function RootLayout({
         className={`${geist.className} antialiased`}
         style={{ background: "#fff" }}
       >
+        <DotCursor />
         {children}
       </body>
     </html>
