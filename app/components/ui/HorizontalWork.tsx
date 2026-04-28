@@ -14,25 +14,12 @@ type Project = {
 
 export default function HorizontalWork({
   projects,
+  mobile,
 }: {
   projects: Project[];
+  mobile: boolean;
 }) {
   const ref = useRef<HTMLElement | null>(null);
-  const [mobile, setMobile] = useState(false);
-
-  useEffect(() => {
-    const check = () => {
-      setMobile(window.innerWidth < 768);
-    };
-
-    check();
-
-    window.addEventListener("resize", check);
-
-    return () => {
-      window.removeEventListener("resize", check);
-    };
-  }, []);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -106,7 +93,7 @@ export default function HorizontalWork({
     <section
       id="work"
       ref={ref}
-      className="relative h-[320vh]"
+      className="relative h-[320vh] border-t border-black/10"
     >
       <div className="sticky top-0 h-screen overflow-hidden">
 

@@ -17,7 +17,7 @@ export default function Hero({
   return (
     <section className="relative z-10 flex min-h-screen flex-col overflow-hidden pt-24">
 
-      <div className="z-10 flex flex-1 flex-col items-center justify-center px-6 pb-24 text-center">
+      <div className="z-10 flex flex-1 flex-col items-center justify-center px-6 pb-24 text-center mx-auto max-w-[1200px]">
         <motion.h1
           className="
             text-[clamp(2.1rem,4.5vw,4.6rem)]
@@ -105,9 +105,9 @@ export default function Hero({
         </motion.div>
       </div>
 
-      <div className="px-6 md:px-12 lg:px-16">
+      {/* <div className="px-6 md:px-12 lg:px-16">
         <div className="h-px bg-black/10" />
-      </div>
+      </div> */}
     </section>
   );
 }

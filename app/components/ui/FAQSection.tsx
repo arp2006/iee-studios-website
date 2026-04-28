@@ -32,10 +32,10 @@ export default function FAQSection() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <section className="relative z-1 px-6 pt-28 pb-32 md:px-12 md:pt-36 md:pb-20 lg:px-16">
+    <section className="relative border-t border-black/10 z-1 px-6 pt-28 pb-32 md:px-12 md:pt-36 md:pb-20 lg:px-16">
       <div className="mx-auto max-w-[1200px]">
         <motion.h2
-          className="mb-16 text-4xl font-medium tracking-[-0.03em] md:mb-12 md:text-5xl lg:text-6xl"
+          className="mb-16 text-[clamp(2.6rem,4vw,5rem)] font-medium tracking-[-0.03em] md:mb-12 md:text-5xl lg:text-6xl"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
@@ -71,7 +71,13 @@ export default function FAQSection() {
                   py-8 text-left cursor-pointer
                 "
               >
-                <span className="text-[19px] font-medium tracking-[-0.01em]">
+                <span
+                  className="
+                    text-[clamp(1.15rem,1.3vw,1.2rem)]
+                    font-medium
+                    tracking-[-0.01em]
+                  "
+                >
                   {faq.question}
                 </span>
 
@@ -114,7 +120,7 @@ export default function FAQSection() {
                       transition={{ duration: 0.35 }}
                       className="
                         pb-8 pr-12
-                        text-[16px]
+                        text-[clamp(0.9rem,1.1vw,1rem)]
                         leading-[1.75]
                         text-black/50
                       "

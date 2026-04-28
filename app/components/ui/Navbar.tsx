@@ -6,6 +6,7 @@ type NavbarProps = {
   showNav: boolean;
   smallNav: boolean;
   CALENDLY: string;
+  mobile: boolean;
 };
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
@@ -14,6 +15,7 @@ export default function Navbar({
   showNav,
   smallNav,
   CALENDLY,
+  mobile,
 }: NavbarProps) {
   return (
     <AnimatePresence>
@@ -26,10 +28,18 @@ export default function Navbar({
           animate={{
             opacity: 1,
             y: 0,
-            width: smallNav ? "240px" : "900px",
+
+            width: mobile
+              ? (smallNav ? "92vw" : "94vw")
+              : (smallNav ? "270px" : "900px"),
+
             paddingTop: smallNav ? "12px" : "18px",
             paddingBottom: smallNav ? "12px" : "18px",
-            left: smallNav ? "72%" : "50%",
+
+            left: "50%",
+
+            // replaces the 74.5% hack
+            x: mobile ? 0 : (smallNav ? 500 : 0),
           }}
           transition={{
             duration: 0.55,
@@ -45,7 +55,7 @@ export default function Navbar({
             bg-white/[0.08]
             backdrop-blur-2xl
 
-            border border-black/30
+            border border-white/30
             shadow-[0_8px_40px_rgba(0,0,0,0.06)]
           "
         >

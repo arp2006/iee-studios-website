@@ -33,6 +33,18 @@ export default function Home() {
     budget: "",
     project: ""
   });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
 
@@ -59,8 +71,8 @@ export default function Home() {
     const onScroll = () => {
       const y = window.scrollY;
 
-      setShowNav(y > 500);
-      setSmallNav(y > 900);
+      setShowNav(y > 300);
+      setSmallNav(y > 850);
     };
 
     window.addEventListener("scroll", onScroll);
@@ -68,7 +80,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative min-h-screen bg-white text-black">
+    <main className="relative min-h-screen bg-white text-black mx-auto">
 
       <Script src="https://fast.wistia.com/player.js" strategy="lazyOnload" />
 
@@ -76,6 +88,7 @@ export default function Home() {
         showNav={showNav}
         smallNav={smallNav}
         CALENDLY={CALENDLY}
+        mobile={isMobile}
       />
 
       <Hero
@@ -83,7 +96,7 @@ export default function Home() {
         lenisRef={lenisRef}
       />
 
-      <HorizontalWork projects={projects} />
+      <HorizontalWork mobile={isMobile} projects={projects} />
 
       <FAQSection />
 
