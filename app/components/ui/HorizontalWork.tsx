@@ -108,7 +108,7 @@ export default function HorizontalWork({
       ref={ref}
       className="relative h-[320vh]"
     >
-      <div className="sticky top-0 h-screen overflow-hidden bg-white">
+      <div className="sticky top-0 h-screen overflow-hidden">
 
         <div className="absolute top-16 left-6 md:left-12 lg:left-20 z-20">
           <h2 className="

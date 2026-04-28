@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+import Navbar from "../ui/Navbar";
 
 type HeroProps = {
   showNav: boolean;
@@ -19,68 +20,20 @@ export default function Hero({
 }: HeroProps) {
   return (
     <section className="relative z-10 flex min-h-screen flex-col overflow-hidden pt-24">
-      {/* Navigation */}
-      <AnimatePresence>
-        {showNav && (
-          <motion.nav
-            initial={{
-              opacity: 0,
-              y: -30,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              width: smallNav ? "520px" : "900px",
-              paddingTop: smallNav ? "12px" : "20px",
-              paddingBottom: smallNav ? "12px" : "16px",
-              left: smallNav ? "72%" : "50%",
-            }}
-            transition={{
-              duration: 0.55,
-              ease,
-            }}
-            className="
-              fixed top-14 left-1/2 z-[9999]
-              flex items-center justify-between
-              rounded-full border border-black/10
-              bg-white/80 px-6 shadow-sm backdrop-blur-xl
-              -translate-x-1/2 md:px-8
-            "
-          >
-            <motion.span
-              className="text-[11px] font-medium uppercase tracking-[0.25em]"
-              animate={{
-                letterSpacing: smallNav ? "0.18em" : "0.25em",
-                opacity: smallNav ? 0.7 : 1,
-              }}
-            >
-              IEE Studios
-            </motion.span>
+      
+      <Navbar
+        showNav={showNav}
+        smallNav={smallNav}
+        CALENDLY={CALENDLY}
+      />
 
-            <motion.a
-              href={CALENDLY}
-              target="_blank"
-              rel="noopener noreferrer"
-              animate={{
-                paddingLeft: smallNav ? 18 : 24,
-                paddingRight: smallNav ? 18 : 24,
-              }}
-              className="
-                rounded-full bg-black px-6 py-3
-                text-[13px] text-white
-                hover:bg-black/85
-              "
-            >
-              Book a Call
-            </motion.a>
-          </motion.nav>
-        )}
-      </AnimatePresence>
-
-      {/* Hero */}
       <div className="z-10 flex flex-1 flex-col items-center justify-center px-6 pb-24 text-center">
         <motion.h1
-          className="text-[clamp(2.6rem,5.5vw,5.5rem)] font-semibold leading-[1.05] tracking-[-0.03em]"
+          className="
+            text-[clamp(2.6rem,5.5vw,5.5rem)]
+            font-semibold leading-[1.05]
+            tracking-[-0.03em]
+          "
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -96,12 +49,16 @@ export default function Hero({
         </motion.h1>
 
         <motion.p
-          className="mt-7 max-w-[520px] text-[16px] leading-[1.7] text-black/50 md:text-[17px]"
+          className="
+            mt-7 max-w-[520px]
+            text-[16px] leading-[1.7]
+            text-black/50 md:text-[17px]
+          "
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: 0.8,
-            delay: 0.12,
+            duration: .8,
+            delay: .12,
             ease,
           }}
         >
@@ -120,8 +77,8 @@ export default function Hero({
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: 0.8,
-            delay: 0.25,
+            duration: .8,
+            delay: .25,
             ease,
           }}
         >
@@ -130,10 +87,10 @@ export default function Hero({
             target="_blank"
             rel="noopener noreferrer"
             className="
-              inline-flex items-center gap-3 rounded-full
-              bg-black px-8 py-4 text-[14px]
+              inline-flex items-center gap-3
+              rounded-full bg-black
+              px-8 py-4 text-[14px]
               font-medium text-white
-              transition-colors duration-300
               hover:bg-black/80
             "
           >
@@ -149,8 +106,8 @@ export default function Hero({
             }
             className="
               inline-flex items-center gap-1
-              text-[14px] font-medium text-black/40
-              transition-colors hover:text-black
+              text-[14px] font-medium
+              text-black/40 hover:text-black
             "
           >
             View Case Studies
@@ -158,7 +115,6 @@ export default function Hero({
         </motion.div>
       </div>
 
-      {/* Divider */}
       <div className="px-6 md:px-12 lg:px-16">
         <div className="h-px bg-black/10" />
       </div>
