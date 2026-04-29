@@ -93,7 +93,7 @@ export default function HorizontalWork({
     <section
       id="work"
       ref={ref}
-      className="relative h-[320vh] border-t border-black/10"
+      className="relative h-[320vh]"
     >
       <div className="sticky top-0 h-screen overflow-hidden">
 
