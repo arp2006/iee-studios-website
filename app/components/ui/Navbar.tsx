@@ -30,7 +30,7 @@ export default function Navbar({
             y: 0,
 
             width: mobile
-              ? (smallNav ? "92vw" : "94vw")
+              ? "94vw"
               : (smallNav ? "270px" : "900px"),
 
             paddingTop: smallNav ? "12px" : "18px",
