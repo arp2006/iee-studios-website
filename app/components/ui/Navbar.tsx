@@ -28,18 +28,18 @@ export default function Navbar({
           animate={{
             opacity: 1,
             y: 0,
-
             width: mobile
               ? "94vw"
               : (smallNav ? "270px" : "900px"),
-
             paddingTop: smallNav ? "12px" : "18px",
             paddingBottom: smallNav ? "12px" : "18px",
-
             left: "50%",
-
-            // replaces the 74.5% hack
             x: mobile ? 0 : (smallNav ? 500 : 0),
+          }}
+          exit={{
+            opacity: 0,
+            width: "250px",
+            y: -30,
           }}
           transition={{
             duration: 0.55,
