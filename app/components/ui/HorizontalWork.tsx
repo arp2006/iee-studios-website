@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useMotionValueEvent, useScroll, useTransform } from "motion/react";
+import { motion, useMotionValueEvent, useScroll, useSpring, useTransform } from "motion/react";
 import Script from "next/script";
 
 type Project = {
@@ -28,14 +28,25 @@ export default function HorizontalWork({
     offset: ["start start", "end end"],
   });
 
+  const slideWidth = typeof window !== "undefined" ? window.innerWidth * 0.9 : 0;
+
   const x = useTransform(
     scrollYProgress,
     [0, 1],
-    ["0%", "-75%"]
+    [0, -(projects.length - 1) * slideWidth]
   );
 
+  const smoothX = useSpring(x, {
+    stiffness: 100,
+    damping: 20,
+  });
+
   useMotionValueEvent(scrollYProgress, "change", (v) => {
-    const index = Math.round(v * (projects.length - 1));
+    const raw = v * (projects.length - 1);
+
+    // snap threshold
+    const index = Math.round(raw);
+
     setCurrent(index);
   });
 
@@ -111,6 +122,7 @@ export default function HorizontalWork({
       id="work"
       ref={ref}
       className="relative h-[320vh]"
+      snap-y snap-mandatory
     >
       <div className="sticky top-0 h-screen overflow-hidden">
 
@@ -125,8 +137,8 @@ export default function HorizontalWork({
         </div>
 
         <motion.div
-          style={{ x }}
-          className="flex h-screen w-[400vw]"
+          style={{ x: smoothX }}
+          className="flex h-screen gap-8"
         >
 
           {projects.slice(0, 4).map((project, index) => (
@@ -134,11 +146,12 @@ export default function HorizontalWork({
             <section
               key={project.title}
               className="
-              w-screen
+              w-[90vw] h-full flex items-center justify-center mx-auto
               h-screen
               shrink-0
               flex items-center
               px-6 md:px-12 lg:px-20
+              snap-center
               "
             >
 
@@ -207,12 +220,12 @@ export default function HorizontalWork({
                 </div>
 
 
-                <div className="
-                  overflow-hidden
-                  rounded-2xl
-                ">
 
-                  {project.video && (
+                {project.video && (
+                  <div
+                    className={`w-full h-full rounded-2xl overflow-hidden transition-all duration-500 ${index === current ? "scale-100" : "scale-95"}`}
+                  >
+
                     <video
                       ref={(el) => {
                         videoRefs.current[index] = el;
@@ -220,13 +233,12 @@ export default function HorizontalWork({
                       src={project.video}
                       muted
                       playsInline
-                      controls
                       preload="metadata"
-                      className="w-full h-full object-cover"
+                      className={`w-full h-full object-cover transform-gpu transition-all duration-500 ease-out ${index === current ? "opacity-100" : "opacity-30"}`}
                     />
-                  )}
+                  </div>
+                )}
 
-                </div>
 
               </div>
 
