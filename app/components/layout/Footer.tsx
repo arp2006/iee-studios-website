@@ -30,7 +30,7 @@ const Footer = () => {
 
   return (
     <footer className="relative z-1 border-t border-black/10 px-6 py-3 md:px-12 md:pb-28 lg:px-16">
-      <div className="mx-auto max-w-[1200px]">
+      <div className="mx-auto max-w-[1100px]">
         <StartProjectForm />
 
         {/* Bottom Footer */}

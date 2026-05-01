@@ -45,8 +45,7 @@ export default function HorizontalWork({
           <div className="space-y-20">
             {projects.map((project) => (
               <article key={project.title}>
-                <div className="overflow-hidden rounded-2xl">
-
+                <div className="aspect-[16/10] w-full overflow-hidden rounded-xl bg-black/5 lg:-ml-6">
                   {project.wistiaId && (
                     <>
                       <Script
@@ -59,14 +58,12 @@ export default function HorizontalWork({
                         media-id={project.wistiaId}
                         style={{
                           width: "100%",
-                          height: "300px",
+                          height: "100%",
                         }}
                       />
                     </>
                   )}
-
                 </div>
-
                 <div className="mt-6">
                   <h3 className="text-2xl font-medium">
                     {project.title}
@@ -87,7 +84,7 @@ export default function HorizontalWork({
 
   /* Desktop horizontal reel */
 
-  
+
 
   return (
     <section
@@ -99,10 +96,7 @@ export default function HorizontalWork({
 
         <div className="absolute top-16 z-20 justify-center w-full">
           <h2 className="
-            text-4xl
-            md:text-6xl
-            lg:text-7xl
-            tracking-[-0.04em]
+            text-[clamp(2rem,3vw,3.8rem)]
             font-medium
             text-center
           ">
@@ -115,7 +109,7 @@ export default function HorizontalWork({
           className="flex h-screen w-[400vw]"
         >
 
-          {projects.slice(0,4).map((project,index)=>(
+          {projects.slice(0, 4).map((project, index) => (
 
             <section
               key={project.title}
@@ -128,54 +122,65 @@ export default function HorizontalWork({
               "
             >
 
-              <div className="
-                mx-auto
-                grid
-                w-full
-                max-w-[1300px]
-                items-center
-                gap-20
-                md:grid-cols-2
-              ">
+              <div 
+                className="
+                  mx-auto
+                  grid
+                  w-full
+                  max-w-[1100px]
+                  items-center
+                  gap-12 lg:gap-14
+                  md:grid-cols-[0.6fr_1fr]
+                "
+              >
 
                 <div>
 
-                  <p className="
-                    mb-6
-                    text-[11px]
-                    uppercase
-                    tracking-[0.25em]
-                    text-black/35
-                  ">
+                  <p
+                    className="
+                      mb-5
+                      text-[11px]
+                      uppercase
+                      tracking-[0.18em]
+                      text-black/40
+                    "
+                  >
                     {project.client}
                   </p>
 
-                  <h3 className="
-                    text-[clamp(3rem,7vw,7rem)]
-                    leading-[0.95]
-                    tracking-[-0.05em]
-                    font-medium
-                  ">
+                  <h3
+                    className="
+                      text-[clamp(1.8rem,2.6vw,3.2rem)]
+                      leading-[1.05]
+                      tracking-[-0.02em]
+                      font-medium
+                      max-w-[480px]
+                    "
+                  >
                     {project.title}
                   </h3>
 
-                  <p className="
-                    mt-8
-                    max-w-md
-                    text-lg
-                    leading-[1.7]
-                    text-black/45
-                  ">
+                  <p
+                    className="
+                      mt-6
+                      max-w-[420px]
+                      text-[15px]
+                      leading-[1.6]
+                      text-black/50
+                    "
+                  >
                     {project.type} — {project.year}
                   </p>
 
-                  <div className="
-                    mt-16
-                    text-[12px]
-                    tracking-[0.2em]
-                    uppercase
-                    text-black/25
-                  ">
+                  <div
+                    className="
+                      mt-12
+                      text-[11px]
+                      tracking-[0.18em]
+                      uppercase
+                      text-black/30
+                    "
+                  >
                     0{index + 1} — 04
                   </div>
 
@@ -198,8 +203,8 @@ export default function HorizontalWork({
                       <wistia-player
                         media-id={project.wistiaId}
                         style={{
-                          width:"100%",
-                          height:"600px"
+                          width: "100%",
+                          height: "clamp(220px, 26vw, 420px)"
                         }}
                       />
                     </>

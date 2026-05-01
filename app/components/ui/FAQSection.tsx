@@ -33,9 +33,9 @@ export default function FAQSection() {
 
   return (
     <section className="relative border-t border-black/10 z-1 px-6 pt-28 pb-32 md:px-12 md:pt-36 md:pb-20 lg:px-16">
-      <div className="mx-auto max-w-[1200px]">
+      <div className="mx-auto max-w-[1100px]">
         <motion.h2
-          className="mb-16 text-[clamp(2.6rem,4vw,5rem)] font-medium tracking-[-0.03em] md:mb-12 md:text-5xl lg:text-6xl"
+          className="mb-16 text-[clamp(2rem,3vw,3.8rem)] font-medium tracking-[-0.03em] md:mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
