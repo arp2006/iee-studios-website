@@ -50,7 +50,7 @@ export default function StartProjectForm() {
           </span>
         </h2>
 
-        <p className="mt-4 max-w-md text-[14px] leading-[1.8] text-black/50">
+        <p className="mt-4 max-w-md text-[clamp(0.9rem,1.1vw,1rem)] leading-[1.8] text-black/50">
           Tell us about your product, launch goals, and
           creative ambitions. We’ll shape a film built
           to move people.
@@ -107,7 +107,7 @@ export default function StartProjectForm() {
             <option value="">Select Budget</option>
             <option>Under $4000</option>
             <option>$4000–$6000</option>
-            <option>$6000–$10000+</option>
+            <option>$6000–$10000+ (with shooting)</option>
           </select>
 
           <div className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-black/35 text-sm">
