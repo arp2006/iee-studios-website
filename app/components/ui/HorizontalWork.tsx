@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion, useMotionValueEvent, useScroll, useTransform } from "motion/react";
 import Script from "next/script";
 
 type Project = {
@@ -9,7 +9,7 @@ type Project = {
   client: string;
   type: string;
   year: string;
-  wistiaId?: string;
+  video?: string;
 };
 
 export default function HorizontalWork({
@@ -20,6 +20,8 @@ export default function HorizontalWork({
   mobile: boolean;
 }) {
   const ref = useRef<HTMLElement | null>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const [current, setCurrent] = useState(0);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -32,6 +34,28 @@ export default function HorizontalWork({
     ["0%", "-75%"]
   );
 
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    const index = Math.round(v * (projects.length - 1));
+    setCurrent(index);
+  });
+
+  useEffect(() => {
+    videoRefs.current.forEach((video, i) => {
+      if (!video) return;
+
+      if (i === current) {
+        if (video.paused) {
+          video.currentTime = 0;
+          video.play().catch(() => { });
+        }
+      } else {
+        if (!video.paused) {
+          video.pause();
+        }
+      }
+    });
+  }, [current]);
+
   /* Mobile fallback */
   if (mobile) {
     return (
@@ -43,25 +67,21 @@ export default function HorizontalWork({
           </h2>
 
           <div className="space-y-20">
-            {projects.map((project) => (
+            {projects.map((project, index) => (
               <article key={project.title}>
                 <div className="aspect-[16/10] w-full overflow-hidden rounded-xl bg-black/5 lg:-ml-6">
-                  {project.wistiaId && (
-                    <>
-                      <Script
-                        src={`https://fast.wistia.com/embed/${project.wistiaId}.js`}
-                        strategy="lazyOnload"
-                      />
-
-                      {/* @ts-ignore */}
-                      <wistia-player
-                        media-id={project.wistiaId}
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                        }}
-                      />
-                    </>
+                  {project.video && (
+                    <video
+                      ref={(el) => {
+                        videoRefs.current[index] = el;
+                      }}
+                      src={project.video}
+                      muted
+                      playsInline
+                      preload="metadata"
+                      controls
+                      className="w-full h-full object-cover"
+                    />
                   )}
                 </div>
                 <div className="mt-6">
@@ -122,7 +142,7 @@ export default function HorizontalWork({
               "
             >
 
-              <div 
+              <div
                 className="
                   mx-auto
                   grid
@@ -192,22 +212,18 @@ export default function HorizontalWork({
                   rounded-2xl
                 ">
 
-                  {project.wistiaId && (
-                    <>
-                      <Script
-                        src={`https://fast.wistia.com/embed/${project.wistiaId}.js`}
-                        strategy="lazyOnload"
-                      />
-
-                      {/* @ts-ignore */}
-                      <wistia-player
-                        media-id={project.wistiaId}
-                        style={{
-                          width: "100%",
-                          height: "clamp(220px, 26vw, 420px)"
-                        }}
-                      />
-                    </>
+                  {project.video && (
+                    <video
+                      ref={(el) => {
+                        videoRefs.current[index] = el;
+                      }}
+                      src={project.video}
+                      muted
+                      playsInline
+                      controls
+                      preload="metadata"
+                      className="w-full h-full object-cover"
+                    />
                   )}
 
                 </div>
