@@ -21,10 +21,9 @@ export default function StartProjectForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!isValid) return;
 
-    console.log(form); // wire to form endpoint later
+    console.log(form);
 
     setForm({
       name: "",
@@ -35,142 +34,140 @@ export default function StartProjectForm() {
   };
 
   return (
-    <div className="mx-auto max-w-[1100px] mt-17 grid gap-20 lg:grid-cols-2 items-start">
-      {/* Left Copy */}
-      <div className="max-w-xl">
-        <p className="mb-4 text-[11px] uppercase tracking-[0.32em] text-black/30">
-          Start a Project
-        </p>
+    <section className=" border-t border-black/30">
+      <div className="max-w-[1400px] border-l border-black/30 mx-auto pb-5">
 
-        <h2 className="text-[clamp(2rem,3vw,3.8rem)] font-semibold leading-[0.95] tracking-[-0.045em]">
-          Let’s build
-          <br />
-          <span className="text-black/45">
-            something memorable.
-          </span>
-        </h2>
+        {/* HEADER */}
+        <div className="px-2 md:px-5 lg:px-10 py-10 flex items-center gap-4 text-sm text-black/60">
+          <span>04</span>
+          <span>/</span>
+          <span>START A PROJECT</span>
+        </div>
 
-        <p className="mt-4 max-w-md text-[clamp(0.9rem,1.1vw,1rem)] leading-[1.8] text-black/50">
-          Tell us about your product, launch goals, and
-          creative ambitions. We’ll shape a film built
-          to move people.
-        </p>
-      </div>
+        {/* GRID */}
+        <div className="px-6 md:px-12 lg:px-20 grid lg:grid-cols-2 gap-20 items-start">
 
-      {/* Form */}
-      <form
-        onSubmit={handleSubmit}
-        className="
-        rounded-2xl
-        border border-black/10
-        bg-white/70
-        backdrop-blur-xl
-        p-6 md:p-7
-        shadow-[0_10px_30px_rgba(0,0,0,0.03)]
-        space-y-5
-        max-w-[510px]
-      "
-      >
-        {/* Name */}
-        <FieldLabel label="Name" />
-        <input
-          value={form.name}
-          onChange={(e) =>
-            setForm({ ...form, name: e.target.value })
-          }
-          placeholder="Your Name"
-          className={inputStyles}
-        />
+          {/* LEFT */}
+          <div className="max-w-[560px]">
+            <h2 className="text-[clamp(2.2rem,3vw,3.6rem)] font-semibold leading-[1.05] tracking-[-0.04em]">
+              Let’s build
+              <br />
+              <span className="text-black/45">
+                something memorable.
+              </span>
+            </h2>
 
-        {/* Email */}
-        <FieldLabel label="Email" />
-        <input
-          type="email"
-          value={form.email}
-          onChange={(e) =>
-            setForm({ ...form, email: e.target.value })
-          }
-          placeholder="Email Address"
-          className={inputStyles}
-        />
-
-        {/* Budget */}
-        <FieldLabel label="Budget" />
-        <div className="relative">
-          <select
-            value={form.budget}
-            onChange={(e) =>
-              setForm({ ...form, budget: e.target.value })
-            }
-            className={selectStyles}
-          >
-            <option value="">Select Budget</option>
-            <option>Under $4000</option>
-            <option>$4000–$6000</option>
-            <option>$6000–$10000+ (with shooting)</option>
-          </select>
-
-          <div className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-black/35 text-sm">
-            ↓
+            <p className="mt-6 text-black/50 text-[15px] leading-[1.7] max-w-[420px]">
+              Tell us about your product, launch goals, and creative direction. We’ll shape a film designed to move people.
+            </p>
           </div>
-        </div>
 
-        {/* Project */}
-        <FieldLabel label="Project Brief" />
-        <textarea
-          rows={5}
-          value={form.project}
-          onChange={(e) =>
-            setForm({ ...form, project: e.target.value })
-          }
-          placeholder="Describe your project..."
-          className={textareaStyles}
-        />
-
-        {/* Submit */}
-        <div className="group relative pt-1">
-          <button
-            type="submit"
-            disabled={!isValid}
-            className={`
-              w-full rounded-full py-4
-              text-[13px] font-medium
-              transition-all duration-300
-              ${isValid
-                ? "bg-black text-white hover:bg-black/85"
-                : "bg-black/10 text-black/30 cursor-not-allowed"
-              }
-            `}
+          {/* FORM */}
+          <form
+            onSubmit={handleSubmit}
+            className="
+              rounded-2xl
+              border border-black/10
+              bg-white/70
+              backdrop-blur-xl
+              p-6 md:p-7
+              shadow-[0_10px_30px_rgba(0,0,0,0.03)]
+              space-y-5
+              max-w-[520px]
+            "
           >
-            Send Inquiry
-          </button>
+            <Field label="Name">
+              <input
+                value={form.name}
+                onChange={(e) =>
+                  setForm({ ...form, name: e.target.value })
+                }
+                placeholder="Your Name"
+                className={inputStyles}
+              />
+            </Field>
 
-          {!isValid && (
-            <div
-              className="
-                absolute left-1/2 -translate-x-1/2 -top-12
-                rounded-full bg-black px-3 py-1.5
-                text-[11px] text-white
-                opacity-0 scale-95
-                transition-all
-                group-hover:opacity-100
-                group-hover:scale-100
-              "
-            >
-              Complete inquiry to continue
+            <Field label="Email">
+              <input
+                type="email"
+                value={form.email}
+                onChange={(e) =>
+                  setForm({ ...form, email: e.target.value })
+                }
+                placeholder="Email Address"
+                className={inputStyles}
+              />
+            </Field>
+
+            <Field label="Budget">
+              <div className="relative">
+                <select
+                  value={form.budget}
+                  onChange={(e) =>
+                    setForm({ ...form, budget: e.target.value })
+                  }
+                  className={selectStyles}
+                >
+                  <option value="">Select Budget</option>
+                  <option>Under $4000</option>
+                  <option>$4000–$6000</option>
+                  <option>$6000–$10000+ (with shooting)</option>
+                </select>
+
+                <div className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-black/35 text-sm">
+                  ↓
+                </div>
+              </div>
+            </Field>
+
+            <Field label="Project Brief">
+              <textarea
+                rows={5}
+                value={form.project}
+                onChange={(e) =>
+                  setForm({ ...form, project: e.target.value })
+                }
+                placeholder="Describe your project..."
+                className={textareaStyles}
+              />
+            </Field>
+
+            {/* BUTTON */}
+            <div className="pt-2">
+              <button
+                type="submit"
+                disabled={!isValid}
+                className={`
+                  w-full rounded-full py-3 text-sm transition
+                  ${isValid
+                    ? "bg-black text-white hover:bg-black/85"
+                    : "bg-black/10 text-black/30 cursor-not-allowed"}
+                `}
+              >
+                Send Inquiry →
+              </button>
             </div>
-          )}
+          </form>
         </div>
-      </form>
-    </div>
+      </div>
+    </section>
   );
 }
 
-function FieldLabel({ label }: { label: string }) {
+function Field({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
   return (
-    <label className="block mb-2 text-[12px] uppercase tracking-[0.18em] text-black/35">
-      {label}
-    </label>
+    <div>
+      <label className="block mb-2 text-[12px] uppercase tracking-[0.18em] text-black/35">
+        {label}
+      </label>
+      {children}
+    </div>
   );
 }
 
@@ -178,7 +175,7 @@ const inputStyles = `
   w-full rounded-2xl
   border border-black/8
   bg-neutral-50
-  px-6 py-5
+  px-6 py-4
   outline-none
   focus:border-black/20
 `;
@@ -188,7 +185,7 @@ const selectStyles = `
   rounded-2xl
   border border-black/8
   bg-neutral-50
-  px-6 py-5 pr-14
+  px-6 py-4 pr-14
   outline-none
 `;
 
@@ -196,6 +193,6 @@ const textareaStyles = `
   w-full resize-none rounded-2xl
   border border-black/8
   bg-neutral-50
-  px-6 py-5
+  px-6 py-4
   outline-none
 `;

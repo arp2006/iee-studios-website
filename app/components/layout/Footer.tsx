@@ -1,43 +1,29 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { HiOutlineMail } from "react-icons/hi";
 import { RiTwitterXFill } from "react-icons/ri";
-import StartProjectForm from "../ui/StartProjectForm";
 
-const Footer = () => {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    budget: "",
-    project: "",
-  });
-
-  const isValid =
-    form.name.trim() &&
-    form.email.trim() &&
-    form.budget.trim() &&
-    form.project.trim();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!isValid) return;
-
-    console.log(form);
-    // Add submit logic here
-  };
-
+export default function Footer() {
   return (
-    <footer className="relative z-1 border-t border-black/10 px-6 py-3 md:px-12 md:pb-28 lg:px-16">
-      <div className="mx-auto max-w-[1100px]">
-        <StartProjectForm />
+    <footer className="border-t border-black/30">
+      <div className="max-w-[1400px] mx-auto border-l border-black/30">
 
-        {/* Bottom Footer */}
-        <div className="mt-14 flex flex-col gap-8 md:mt-20 md:flex-row md:items-end md:justify-between">
-          <div className="flex flex-col gap-4">
-            <div className="space-y-0">
-              <p className="text-[11px] uppercase tracking-[0.35em] text-black/30">
+        {/* HEADER (keeps system consistent) */}
+        <div className="px-2 md:px-5 lg:px-10  py-10 flex items-center gap-4 text-sm text-black/60">
+          <span>05</span>
+          <span>/</span>
+          <span>CONTACT</span>
+        </div>
+
+        {/* MAIN */}
+        <div className="px-6 md:px-12 lg:px-20 pb-20 flex flex-col md:flex-row md:items-end md:justify-between gap-10">
+
+          {/* LEFT */}
+          <div className="flex flex-col gap-6 max-w-[520px]">
+
+            <div>
+              <p className="text-[11px] uppercase tracking-[0.32em] text-black/30 mb-2">
                 Creative Direction • Launch Films
               </p>
 
@@ -45,47 +31,43 @@ const Footer = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="
-                  text-[clamp(2rem,3vw,4rem)]
-                  font-medium
-                  tracking-[-0.03em]
-                  text-black/50
-                "
+                className="text-[clamp(2.2rem,3vw,3.6rem)] font-medium tracking-[-0.03em] text-black/50"
               >
                 iee studios
               </motion.h2>
             </div>
 
-            <div className="flex items-center gap-5 pt-2">
+            {/* CONTACT LINKS */}
+            <div className="flex flex-col gap-3 text-sm text-black/50">
+
               <a
                 href="mailto:inspireelevateevovle@gmail.com"
-                className="flex items-center gap-2 text-[13px] text-black/40 transition hover:text-black/80"
+                className="flex items-center gap-2 hover:text-black transition"
               >
                 <HiOutlineMail className="text-[16px]" />
-                <span className="hidden sm:inline">
-                  inspireelevateevovle@gmail.com
-                </span>
+                inspireelevateevovle@gmail.com
               </a>
 
               <a
                 href="https://x.com/madtirth"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-[13px] text-black/40 transition hover:text-black/80"
+                className="flex items-center gap-2 hover:text-black transition"
               >
                 <RiTwitterXFill className="text-[14px]" />
-                <span className="hidden sm:inline">@madtirth</span>
+                @madtirth
               </a>
+
             </div>
           </div>
 
-          <span className="text-[11px] text-black/25">
+          {/* RIGHT */}
+          <div className="text-[12px] text-black/30">
             © 2026 IEE Studios
-          </span>
+          </div>
+
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

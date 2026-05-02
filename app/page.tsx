@@ -12,6 +12,7 @@ import FAQSection from "./components/ui/FAQSection";
 import Hero from "./components/layout/Hero";
 import Navbar from "./components/ui/Navbar";
 import FeaturedWork from "./components/ui/FeaturedWork";
+import StartProjectForm from "./components/ui/StartProjectForm";
 
 const CALENDLY = "https://calendly.com/iee-studios/30-mins-meeting";
 
@@ -111,9 +112,11 @@ export default function Home() {
         
         {/*<HorizontalWork mobile={isMobile} projects={projects} /> */}
 
-        {/* <FAQSection />
+        <FAQSection />
+        
+        <StartProjectForm />
 
-        <Footer /> */}
+        <Footer />
       </div>
     </main>
   );

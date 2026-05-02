@@ -12,17 +12,17 @@ const faqs: FAQ[] = [
   {
     question: "What's the turnaround time for a launch film?",
     answer:
-      "Most projects wrap in 5–10 business days from kickoff to final delivery. If you're on a tight timeline, we offer expedited turnarounds — just let us know when you book.",
+      "Most projects wrap in 5–10 business days from kickoff to final delivery. If you're on a tight timeline, we offer expedited turnarounds.",
   },
   {
     question: "How is a Launch Film different from a launch video?",
     answer:
-      "A launch video explains what your product does — features, UI walkthroughs, animated graphics. A launch film makes people feel something. It's cinematic, emotionally driven, and designed so your audience doesn't just understand your product — they connect with it.",
+      "A launch film is emotional and cinematic. It connects. A launch video explains features. We focus on feeling first.",
   },
   {
     question: "How does the process work?",
     answer:
-      "It starts with you. Describe your product in as much detail as possible — the problem it solves, who it's for, what makes it different. From there, we nail down the visual style and creative direction together: the tone, the pacing, what you want viewers to walk away feeling. Then we get to work.",
+      "You share your product and vision. We define direction, tone, and structure. Then we produce and deliver.",
   },
 ];
 
@@ -32,107 +32,64 @@ export default function FAQSection() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <section className="relative border-t border-black/10 z-1 px-6 pt-28 pb-32 md:px-12 md:pt-36 md:pb-20 lg:px-16">
-      <div className="mx-auto max-w-[1100px]">
-        <motion.h2
-          className="mb-16 text-[clamp(2rem,3vw,3.8rem)] font-medium tracking-[-0.03em] md:mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease }}
-        >
-          Frequently Asked
-        </motion.h2>
+    <section className="border-t border-l border-black/30">
+      <div className="max-w-[1400px] mx-auto border-l border-black/30">
 
+        {/* HEADER (aligned with system) */}
+        <div className="px-2 md:px-5 lg:px-10 py-10 flex items-center gap-4 text-sm text-black/60">
+          <span>03</span>
+          <span>/</span>
+          <span>FAQ</span>
+        </div>
+
+        {/* TITLE */}
+        <div className="px-6 md:px-12 lg:px-20 mb-12">
+          <h2 className="text-[clamp(2rem,3vw,3.2rem)] font-medium tracking-[-0.03em]">
+            Frequently Asked
+          </h2>
+        </div>
+
+        {/* LIST */}
         <div>
           {faqs.map((faq, i) => (
-            <motion.div
+            <div
               key={i}
-              className="border-t border-black/10 last:border-b"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.5,
-                delay: i * 0.08,
-              }}
+              className="px-6 md:px-12 lg:px-20 border-t border-black/10"
             >
-              <motion.button
+              <button
                 onClick={() =>
                   setOpenFaq(openFaq === i ? null : i)
                 }
-                whileHover={{ x: 6 }}
-                transition={{
-                  duration: 0.25,
-                  ease,
-                }}
-                className="
-                  flex w-full items-center justify-between
-                  py-8 text-left cursor-pointer
-                "
+                className="flex w-full items-center justify-between py-8 text-left"
               >
-                <span
-                  className="
-                    text-[clamp(1.15rem,1.3vw,1.2rem)]
-                    font-medium
-                    tracking-[-0.01em]
-                  "
-                >
+                <span className="text-[1.1rem] font-medium tracking-[-0.01em]">
                   {faq.question}
                 </span>
 
-                <motion.span
-                  animate={{
-                    rotate: openFaq === i ? 45 : 0,
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className="text-2xl text-black/30"
-                >
-                  +
-                </motion.span>
-              </motion.button>
+                <span className="text-black/30 text-xl">
+                  {openFaq === i ? "−" : "+"}
+                </span>
+              </button>
 
               <AnimatePresence initial={false}>
                 {openFaq === i && (
                   <motion.div
-                    initial={{
-                      height: 0,
-                      opacity: 0,
-                    }}
-                    animate={{
-                      height: "auto",
-                      opacity: 1,
-                    }}
-                    exit={{
-                      height: 0,
-                      opacity: 0,
-                    }}
-                    transition={{
-                      duration: 0.45,
-                      ease,
-                    }}
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.35, ease }}
                     className="overflow-hidden"
                   >
-                    <motion.p
-                      initial={{ y: 12, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      exit={{ y: 8, opacity: 0 }}
-                      transition={{ duration: 0.35 }}
-                      className="
-                        pb-8 pr-12
-                        text-[clamp(0.9rem,1.1vw,1rem)]
-                        leading-[1.75]
-                        text-black/50
-                      "
-                    >
+                    <p className="pb-8 pr-12 text-sm leading-[1.7] text-black/50 max-w-[600px]">
                       {faq.answer}
-                    </motion.p>
+                    </p>
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </div>
           ))}
         </div>
+
       </div>
     </section>
   );
