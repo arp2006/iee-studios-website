@@ -11,6 +11,7 @@ import Footer from "./components/layout/Footer";
 import FAQSection from "./components/ui/FAQSection";
 import Hero from "./components/layout/Hero";
 import Navbar from "./components/ui/Navbar";
+import FeaturedWork from "./components/ui/FeaturedWork";
 
 const CALENDLY = "https://calendly.com/iee-studios/30-mins-meeting";
 
@@ -26,7 +27,7 @@ const CALENDLY = "https://calendly.com/iee-studios/30-mins-meeting";
 
 const projects = [
   { title: "Nebula Launch Film", client: "Nebula", type: "Launch Film", year: "2025", bg: "#e8e8e8", colSpan: "lg:col-span-7", aspect: "16 / 9", video: "uxp0atu6uo" },
-  { title: "Carekeep Pvt Ltd Launch", client: "Carekeep", type: "Brand Campaign", year: "2025", bg: "#dedede", colSpan: "lg:col-span-5", aspect: "4 / 5", video: "fqvwxkxvlw"},
+  { title: "Carekeep Pvt Ltd Launch", client: "Carekeep", type: "Brand Campaign", year: "2025", bg: "#dedede", colSpan: "lg:col-span-5", aspect: "4 / 5", video: "fqvwxkxvlw" },
   { title: "Basalt Furniture Launch Film", client: "Basalt", type: "Product Launch Film", year: "2025", bg: "#e2e2e2", colSpan: "lg:col-span-5", aspect: "16 / 9", video: "b9xw0zvnzv" },
   { title: "Omni ID Authologic Pvt Ltd Launch", client: "Omni ID", type: "Brand Campaign", year: "2024", bg: "#d8d8d8", colSpan: "lg:col-span-7", aspect: "16 / 10", video: "gifr74w6l7" },
 ];
@@ -88,27 +89,32 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative min-h-screen bg-white text-black mx-auto">
+    <main className="relative min-h-screen bg-white text-black">
+
 
       <Script src="https://fast.wistia.com/player.js" strategy="lazyOnload" />
 
-      <Navbar
-        showNav={showNav}
-        smallNav={smallNav}
-        CALENDLY={CALENDLY}
-        mobile={isMobile}
-      />
+      <div className="relative z-10">
+        <Navbar
+          showNav={showNav}
+          smallNav={smallNav}
+          CALENDLY={CALENDLY}
+          mobile={isMobile}
+        />
 
-      <Hero
-        CALENDLY={CALENDLY}
-        lenisRef={lenisRef}
-      />
+        <Hero
+          CALENDLY={CALENDLY}
+          lenisRef={lenisRef}
+        />
 
-      <HorizontalWork mobile={isMobile} projects={projects} />
+        <FeaturedWork />
+        
+        {/*<HorizontalWork mobile={isMobile} projects={projects} /> */}
 
-      <FAQSection />
+        {/* <FAQSection />
 
-      <Footer />
+        <Footer /> */}
+      </div>
     </main>
   );
 }

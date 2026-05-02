@@ -120,9 +120,9 @@ export default function HorizontalWork({
       className="relative h-[320vh]"
       snap-y snap-mandatory
     >
-      <div className="sticky top-0 h-screen overflow-hidden">
+      <div className="sticky top-0 border-t border-black/10 h-screen overflow-hidden">
 
-        <div className="absolute top-16 z-20 justify-center w-full">
+        <div className="absolute top-16 z-10 justify-center w-full">
           <h2 className="
             text-[clamp(2rem,3vw,3.8rem)]
             font-medium
