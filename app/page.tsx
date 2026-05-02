@@ -25,12 +25,10 @@ const CALENDLY = "https://calendly.com/iee-studios/30-mins-meeting";
 
 
 const projects = [
-  { title: "Nebula Launch Film", client: "Nebula", type: "Launch Film", year: "2025", bg: "#e8e8e8", colSpan: "lg:col-span-7", aspect: "16 / 9", video: "https://res.cloudinary.com/dpw1mj4zg/video/upload/v1777659752/UNCHARTED_Legacy_of_Thieves_Collection_2026.02.07_-_01.38.43.02.DVR_brwdr9.mp4" },
-  { title: "Signal", client: "Vertex Labs", type: "Brand Campaign", year: "2025", bg: "#dedede", colSpan: "lg:col-span-5", aspect: "4 / 5", video: "https://res.cloudinary.com/dpw1mj4zg/video/upload/v1777659752/UNCHARTED_Legacy_of_Thieves_Collection_2026.02.07_-_01.38.43.02.DVR_brwdr9.mp4"},
-  { title: "Basalt Furniture Launch Film", client: "Basalt", type: "Product Launch Film", year: "2025", bg: "#e2e2e2", colSpan: "lg:col-span-5", aspect: "16 / 9", video: "https://res.cloudinary.com/dpw1mj4zg/video/upload/v1777659752/UNCHARTED_Legacy_of_Thieves_Collection_2026.02.07_-_01.38.43.02.DVR_brwdr9.mp4" },
-  { title: "Construct", client: "Onyx Cloud", type: "Product Reveal", year: "2024", bg: "#d8d8d8", colSpan: "lg:col-span-7", aspect: "16 / 10", video: "https://res.cloudinary.com/dpw1mj4zg/video/upload/v1777659752/UNCHARTED_Legacy_of_Thieves_Collection_2026.02.07_-_01.38.43.02.DVR_brwdr9.mp4" },
-  // { title: "Meridian", client: "Atlas Systems", type: "Brand Story", year: "2024", bg: "#e0e0e0", colSpan: "lg:col-span-8", aspect: "16 / 9" },
-  // { title: "Epoch", client: "Nova Platform", type: "Launch Spot", year: "2023", bg: "#d4d4d4", colSpan: "lg:col-span-4", aspect: "3 / 4" },
+  { title: "Nebula Launch Film", client: "Nebula", type: "Launch Film", year: "2025", bg: "#e8e8e8", colSpan: "lg:col-span-7", aspect: "16 / 9", video: "uxp0atu6uo" },
+  { title: "Carekeep Pvt Ltd Launch", client: "Carekeep", type: "Brand Campaign", year: "2025", bg: "#dedede", colSpan: "lg:col-span-5", aspect: "4 / 5", video: "fqvwxkxvlw"},
+  { title: "Basalt Furniture Launch Film", client: "Basalt", type: "Product Launch Film", year: "2025", bg: "#e2e2e2", colSpan: "lg:col-span-5", aspect: "16 / 9", video: "b9xw0zvnzv" },
+  { title: "Omni ID Authologic Pvt Ltd Launch", client: "Omni ID", type: "Brand Campaign", year: "2024", bg: "#d8d8d8", colSpan: "lg:col-span-7", aspect: "16 / 10", video: "gifr74w6l7" },
 ];
 
 export default function Home() {

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValueEvent, useScroll, useSpring, useTransform } from "motion/react";
 import Script from "next/script";
+import WistiaPlayer from "./WistiaPlayer";
 
 type Project = {
   title: string;
@@ -82,17 +83,12 @@ export default function HorizontalWork({
               <article key={project.title}>
                 <div className="aspect-[16/10] w-full overflow-hidden rounded-xl bg-black/5 lg:-ml-6">
                   {project.video && (
-                    <video
-                      ref={(el) => {
-                        videoRefs.current[index] = el;
-                      }}
-                      src={project.video}
-                      muted
-                      playsInline
-                      preload="metadata"
-                      controls
-                      className="w-full h-full object-cover"
-                    />
+                    <div
+                      className={`w-full h-full rounded-2xl overflow-hidden transition-all duration-500 ${index === current ? "scale-100" : "scale-95"
+                        }`}
+                    >
+                      <WistiaPlayer mediaId={project.video} />
+                    </div>
                   )}
                 </div>
                 <div className="mt-6">
@@ -223,19 +219,10 @@ export default function HorizontalWork({
 
                 {project.video && (
                   <div
-                    className={`w-full h-full rounded-2xl overflow-hidden transition-all duration-500 ${index === current ? "scale-100" : "scale-95"}`}
+                    className={`w-full h-full rounded-2xl overflow-hidden transition-all duration-500 ${index === current ? "scale-100" : "scale-95"
+                      }`}
                   >
-
-                    <video
-                      ref={(el) => {
-                        videoRefs.current[index] = el;
-                      }}
-                      src={project.video}
-                      muted
-                      playsInline
-                      preload="metadata"
-                      className={`w-full h-full object-cover transform-gpu transition-all duration-500 ease-out ${index === current ? "opacity-100" : "opacity-30"}`}
-                    />
+                    <WistiaPlayer mediaId={project.video} />
                   </div>
                 )}
 
