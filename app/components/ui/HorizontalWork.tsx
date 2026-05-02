@@ -87,7 +87,7 @@ export default function HorizontalWork({
                       className={`w-full h-full rounded-2xl overflow-hidden transition-all duration-500 ${index === current ? "scale-100" : "scale-95"
                         }`}
                     >
-                      <WistiaPlayer mediaId={project.video} />
+                      <WistiaPlayer mediaId={project.video} active={index === current} />
                     </div>
                   )}
                 </div>
@@ -222,10 +222,15 @@ export default function HorizontalWork({
                     className={`w-full h-full rounded-2xl overflow-hidden transition-all duration-500 ${index === current ? "scale-100" : "scale-95"
                       }`}
                   >
-                    <WistiaPlayer mediaId={project.video} />
+                    {index === current ? (
+                      <WistiaPlayer mediaId={project.video} active={true} />
+                    ) : (
+                      <div className="w-full h-full bg-black/5 flex items-center justify-center text-sm text-black/30">
+                        Preview
+                      </div>
+                    )}
                   </div>
                 )}
-
 
               </div>
 
