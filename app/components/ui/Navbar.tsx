@@ -13,13 +13,13 @@ export default function Navbar({ CALENDLY }: Props) {
         <a
           href="#top"
           className="
-    font-bricolage
-    text-[22px] md:text-[26px]
-    font-bold
-    tracking-[-0.03em]
-    leading-none
-    text-black
-  "
+            font-bricolage
+            text-[22px] md:text-[26px]
+            font-bold
+            tracking-[-0.03em]
+            leading-none
+            text-black
+          "
         >
           iee studios
         </a>
@@ -54,9 +54,9 @@ export default function Navbar({ CALENDLY }: Props) {
           href={CALENDLY}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm text-black hover:text-black/70 transition"
+          className="rounded-full bg-black px-6 py-2.5 text-sm text-white hover:bg-black/80 transition"
         >
-          Book a Call ↗
+          Book a call ↗
         </a>
 
       </div>

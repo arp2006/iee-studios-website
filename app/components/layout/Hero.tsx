@@ -85,7 +85,7 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
                   rel="noopener noreferrer"
                   className="rounded-full bg-black px-6 py-2.5 text-sm text-white hover:bg-black/80 transition"
                 >
-                  Book a Call ↗
+                  Book a call ↗
                 </a>
 
                 <button
