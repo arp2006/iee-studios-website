@@ -38,7 +38,7 @@ export default function Footer() {
             </div>
 
             {/* CONTACT LINKS */}
-            <div className="flex flex-col gap-3 text-sm text-black/50">
+            <div className="flex gap-3 text-sm text-black/50">
 
               <a
                 href="mailto:inspireelevateevovle@gmail.com"

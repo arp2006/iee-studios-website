@@ -9,7 +9,7 @@ import AsciiBackground from "./components/background/AsciiBackground";
 import HorizontalWork from "./components/ui/HorizontalWork";
 import Footer from "./components/layout/Footer";
 import FAQSection from "./components/ui/FAQSection";
-import Hero from "./components/layout/Hero";
+import Hero from "./components/ui/Hero";
 import Header from "./components/layout/Header";
 import FeaturedWork from "./components/ui/FeaturedWork";
 import StartProjectForm from "./components/ui/StartProjectForm";

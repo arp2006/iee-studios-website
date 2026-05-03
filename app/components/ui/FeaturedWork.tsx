@@ -60,17 +60,16 @@ export default function FeaturedWork() {
         {/* LIST */}
         <div>
           {projects.map((project, i) => (
-            <div className="relative">
+            <div key={project.id} className="relative">
               <div className="absolute left-[90px] right-6 md:right-12 lg:right-20 top-0 h-px bg-black/10" />
               <div
-                key={project.id}
                 className="
                 px-6 md:px-12 lg:px-20 py-6
                 flex items-center justify-between
                 group
                 hover:bg-black/[0.02]
                 transition
-                hover:translate-x-2
+                hover:translate-x-1
               "
               >
                 {/* LEFT */}
