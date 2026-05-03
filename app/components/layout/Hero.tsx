@@ -23,7 +23,7 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
         </div>
 
         {/* ARROW */}
-        <span className="text-black text-sm">
+        <span className="pl-1 text-black text-sm">
           ↓
         </span>
 
