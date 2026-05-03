@@ -60,44 +60,54 @@ export default function FeaturedWork() {
         {/* LIST */}
         <div>
           {projects.map((project, i) => (
-            <div
-              key={project.id}
-              className="px-6 md:px-12 lg:px-20 py-6 border-t border-black/10 flex items-center justify-between group hover:bg-black/[0.02] transition"
-            >
-              {/* LEFT */}
-              <div className="flex items-center gap-6 min-w-[400px]">
+            <div className="relative">
+              <div className="absolute left-[90px] right-6 md:right-12 lg:right-20 top-0 h-px bg-black/10" />
+              <div
+                key={project.id}
+                className="
+                px-6 md:px-12 lg:px-20 py-6
+                flex items-center justify-between
+                group
+                hover:bg-black/[0.02]
+                transition
+                hover:translate-x-2
+              "
+              >
+                {/* LEFT */}
+                <div className="flex items-center gap-6 min-w-[400px]">
 
-                {/* INDEX */}
-                <span className="text-sm text-black/40 w-[40px]">
-                  {project.id}
-                </span>
+                  {/* INDEX */}
+                  <span className="text-sm text-black/40 w-[40px]">
+                    {project.id}
+                  </span>
 
-                {/* THUMB */}
-                <div className="w-[80px] h-[50px] bg-black/10 overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
+                  {/* THUMB */}
+                  <div className="w-[80px] h-[50px] bg-black/10 overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* TITLE */}
+                  <span className="font-medium text-black">
+                    {project.title}
+                  </span>
                 </div>
 
-                {/* TITLE */}
-                <span className="font-medium text-black">
-                  {project.title}
-                </span>
-              </div>
+                {/* CENTER */}
+                <div className="hidden md:block text-black/50 text-sm">
+                  {project.description}
+                </div>
 
-              {/* CENTER */}
-              <div className="hidden md:block text-black/50 text-sm">
-                {project.description}
-              </div>
-
-              {/* RIGHT */}
-              <div className="flex items-center gap-10 text-sm text-black/50">
-                <span>{project.year}</span>
-                <span className="group-hover:translate-x-1 transition">
-                  →
-                </span>
+                {/* RIGHT */}
+                <div className="flex items-center gap-10 text-sm text-black/50">
+                  <span>{project.year}</span>
+                  <span className="">
+                    →
+                  </span>
+                </div>
               </div>
             </div>
           ))}

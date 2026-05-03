@@ -35,7 +35,7 @@ export default function StartProjectForm() {
 
   return (
     <section id="start" className=" border-t border-black/30">
-      <div className="w-full lg:pl-[70px] mx-auto pb-5">
+      <div className="w-full lg:pl-[70px] mx-auto pb-20">
 
         {/* HEADER */}
         <div className="px-2 md:px-5 lg:px-10 py-10 flex items-center gap-4 text-sm text-black/60">
