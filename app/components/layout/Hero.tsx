@@ -12,13 +12,26 @@ const ease = [0.25, 0.1, 0.25, 1] as const;
 export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
   return (
     <section className="relative  min-h-[50vh] flex items-center">
+
+      <div className="absolute lg:left-[10px] bottom-16 flex flex-col items-center gap-4">
+
+        {/* LABEL */}
+        <div className="rotate-[-90deg]">
+          <span className="text-[10px] tracking-[0.25em] text-black">
+            SCROLL
+          </span>
+        </div>
+
+        {/* ARROW */}
+        <span className="text-black text-sm">
+          ↓
+        </span>
+
+      </div>
+
       <div className="w-full lg:pl-[70px] mx-auto ">
 
-        {/* <div className="px-2 md:px-5 lg:px-10 pt-10">
-          <span className="font-bricolage text-[50px] tracking-[-0.01em] text-black/80">
-            iee studios
-          </span>
-        </div> */}
+
 
 
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-x-12 gap-y-0 mt-10">
@@ -31,7 +44,7 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
               <span>/</span>
               <span>LAUNCH FILMS</span>
             </div>
-            
+
             <div className="max-w-[680px] px-6 md:px-5 lg:px-9">
               <motion.h1
                 className="text-[clamp(1.2rem,2vw,2.3rem)] font-semibold leading-[1.05] tracking-[-0.03em]"
