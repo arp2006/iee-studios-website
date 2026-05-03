@@ -10,38 +10,38 @@ type Project = {
 
 const projects: Project[] = [
   {
-    id: "042",
-    title: "kupidtv",
-    description: 'launch film · "the call"',
+    id: "01",
+    title: "Basalt Furniture",
+    description: 'launch film · "verified by design"',
     year: "2026",
     image: "/thumb1.jpg",
   },
   {
-    id: "041",
-    title: "euphoria.finance",
-    description: 'product spot · "a new way to trade"',
-    year: "2025",
+    id: "02",
+    title: "Carekeep Launch",
+    description: "product launch film · teaser",
+    year: "2026",
     image: "/thumb2.jpg",
   },
   {
-    id: "040",
-    title: "klever wallet",
-    description: "brand ad · web3 / polkadot",
-    year: "2025",
+    id: "03",
+    title: "Nebula AI Agents",
+    description: 'launch film · "unused potential"',
+    year: "2026",
     image: "/thumb3.jpg",
   },
   {
-    id: "039",
-    title: "audrey",
-    description: 'brand film · "this is audrey"',
-    year: "2025",
+    id: "04",
+    title: "Omni ID — Authologic",
+    description: "product launch film · verification",
+    year: "2026",
     image: "/thumb4.jpg",
   },
 ];
 
 export default function FeaturedWork() {
   return (
-    <section className="border-t border-black/30">
+    <section id="work" className="border-t border-black/30">
       <div className="w-full lg:pl-[70px] mx-auto ">
 
         {/* HEADER */}

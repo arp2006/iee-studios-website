@@ -4,7 +4,7 @@ type Props = {
   CALENDLY: string;
 };
 
-export default function Navbar({ CALENDLY }: Props) {
+export default function Header({ CALENDLY }: Props) {
   return (
     <header className=" border-b border-black/30 top-6 left-0 w-full z-50">
       <div className="w-full pl-[80px] lg:pl-[120px] pr-6 md:pr-12 lg:pr-20 py-6 flex items-center justify-between">
@@ -39,7 +39,7 @@ export default function Navbar({ CALENDLY }: Props) {
             Work
           </a>
           <a href="#work" className="hover:text-black transition">
-            Case Studies
+            Featured Work
           </a>
           <a href="#start" className="hover:text-black transition">
             Start

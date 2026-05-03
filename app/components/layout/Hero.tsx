@@ -47,7 +47,7 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
 
             <div className="max-w-[680px] px-6 md:px-5 lg:px-9">
               <motion.h1
-                className="text-[clamp(1.2rem,2vw,2.3rem)] font-semibold leading-[1.05] tracking-[-0.03em]"
+                className="text-[clamp(2.4rem,4vw,4.6rem)] font-semibold leading-[1.05] tracking-[-0.03em]"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, ease }}

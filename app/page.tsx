@@ -10,7 +10,7 @@ import HorizontalWork from "./components/ui/HorizontalWork";
 import Footer from "./components/layout/Footer";
 import FAQSection from "./components/ui/FAQSection";
 import Hero from "./components/layout/Hero";
-import Navbar from "./components/ui/Navbar";
+import Header from "./components/layout/Header";
 import FeaturedWork from "./components/ui/FeaturedWork";
 import StartProjectForm from "./components/ui/StartProjectForm";
 
@@ -94,7 +94,7 @@ export default function Home() {
       <div className="pointer-events-none fixed inset-0 z-0">
         <div className="absolute lg:left-[70px] top-0 h-full w-px bg-black/20" />
       </div>
-      <Navbar CALENDLY={CALENDLY} />
+      <Header CALENDLY={CALENDLY} />
       
       <Script src="https://fast.wistia.com/player.js" strategy="lazyOnload" />
 
