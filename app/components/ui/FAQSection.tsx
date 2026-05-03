@@ -32,8 +32,8 @@ export default function FAQSection() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <section className="border-t border-l border-black/30">
-      <div className="max-w-[1400px] mx-auto border-l border-black/30">
+    <section className="border-t border-black/30">
+      <div className="w-full lg:pl-[70px] mx-auto ">
 
         {/* HEADER (aligned with system) */}
         <div className="px-2 md:px-5 lg:px-10 py-10 flex items-center gap-4 text-sm text-black/60">

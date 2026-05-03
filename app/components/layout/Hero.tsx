@@ -12,13 +12,13 @@ const ease = [0.25, 0.1, 0.25, 1] as const;
 export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
   return (
     <section className="relative  min-h-[50vh] flex items-center">
-      <div className="w-full max-w-[1400px] mx-auto border-l border-black/30">
+      <div className="w-full lg:pl-[70px] mx-auto ">
 
-        <div className="px-2 md:px-5 lg:px-10 pt-10">
+        {/* <div className="px-2 md:px-5 lg:px-10 pt-10">
           <span className="font-bricolage text-[50px] tracking-[-0.01em] text-black/80">
             iee studios
           </span>
-        </div>
+        </div> */}
 
 
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-x-12 gap-y-0 mt-10">

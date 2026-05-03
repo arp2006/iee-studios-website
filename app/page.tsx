@@ -91,17 +91,20 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen bg-white text-black">
-
-
+      <div className="pointer-events-none fixed inset-0 z-0">
+        <div className="absolute lg:left-[70px] top-0 h-full w-px bg-black/20" />
+      </div>
+      <Navbar CALENDLY={CALENDLY} />
+      
       <Script src="https://fast.wistia.com/player.js" strategy="lazyOnload" />
 
       <div className="relative z-10">
-        <Navbar
+        {/* <Navbar
           showNav={showNav}
           smallNav={smallNav}
           CALENDLY={CALENDLY}
           mobile={isMobile}
-        />
+        /> */}
 
         <Hero
           CALENDLY={CALENDLY}
@@ -109,11 +112,10 @@ export default function Home() {
         />
 
         <FeaturedWork />
-        
-        {/*<HorizontalWork mobile={isMobile} projects={projects} /> */}
+
 
         <FAQSection />
-        
+
         <StartProjectForm />
 
         <Footer />
