@@ -50,17 +50,17 @@ export default function FAQSection() {
         </div>
 
         {/* LIST */}
-        <div className="overflow-x-hidden">
+        <div className="overflow-x-hidden ">
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className="px-6 md:px-12 lg:px-20 border-t border-black/10 transition hover:translate-x-1"
+              className="px-6 md:px-12 lg:px-20 border-t border-black/10 transition hover:translate-x-2"
             >
               <button
                 onClick={() =>
                   setOpenFaq(openFaq === i ? null : i)
                 }
-                className="flex w-full items-center justify-between py-8 text-left"
+                className="flex w-full items-center justify-between py-8 text-left  cursor-pointer"
               >
                 <span className="text-[1.1rem] font-medium tracking-[-0.01em]">
                   {faq.question}

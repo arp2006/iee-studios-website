@@ -61,15 +61,16 @@ export default function FeaturedWork() {
         <div className="overflow-x-hidden">
           {projects.map((project, i) => (
             <div key={project.id} className="relative">
-              <div className="absolute left-[90px] right-6 md:right-12 lg:right-20 top-0 h-px bg-black/10" />
+              <div className="absolute left-[75px] right-6 md:right-12 lg:right-20 top-0 h-px bg-black/10" />
               <div
                 className="
-                px-6 md:px-12 lg:px-20 py-6
+                px-6 md:px-12 lg:px-20 py-3
                 flex items-center justify-between
                 group
                 hover:bg-black/[0.02]
                 transition
-                hover:translate-x-1
+                hover:translate-x-2
+                cursor-pointer
               "
               >
                 {/* LEFT */}
