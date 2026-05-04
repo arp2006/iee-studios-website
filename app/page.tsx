@@ -97,8 +97,9 @@ export default function Home() {
       <Header CALENDLY={CALENDLY} />
       
       <Script src="https://fast.wistia.com/player.js" strategy="lazyOnload" />
-
+      
       <div className="relative z-10">
+       
         {/* <Navbar
           showNav={showNav}
           smallNav={smallNav}

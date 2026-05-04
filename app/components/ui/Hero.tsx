@@ -11,7 +11,7 @@ const ease = [0.25, 0.1, 0.25, 1] as const;
 
 export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
   return (
-    <section className="relative  min-h-[50vh] flex items-center">
+    <section className="relative min-h-[60vh] grid grid-cols-1 lg:grid-cols-2 items-start">
 
       <div className="absolute lg:left-[10px] bottom-16 flex flex-col items-center gap-4">
 
@@ -29,15 +29,15 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
 
       </div>
 
-      <div className="w-full lg:pl-[70px] mx-auto ">
+      <div className="lg:pl-[70px]">
+
+        <div className="relative mt-10 lg:h-[520px] flex items-center">
+
+          {/* BACKGROUND IMAGE */}
 
 
-
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-x-12 gap-y-0 mt-10">
-
-          {/* LEFT */}
-          <div className="max-w-[680px] px-2 md:px-5 lg:px-10">
+          {/* CONTENT */}
+          <div className="relative max-w-[680px] px-2 md:px-5 lg:px-10">
 
             <div className="flex items-center gap-5 text-sm text-black/50 mb-15">
               <span>01</span>
@@ -103,18 +103,31 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
             </div>
           </div>
 
-          {/* RIGHT */}
-          <div className="relative w-full h-[420px] lg:h-[520px] flex items-center justify-center">
 
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-[70%] h-[70%] bg-[radial-gradient(circle_at_center,black_0%,transparent_70%)] opacity-80 blur-xl" />
-            </div>
 
-            <div className="w-[60%] h-[60%] bg-[conic-gradient(from_0deg,black,white,black)] blur-2xl opacity-60" />
-
-          </div>
 
         </div>
+      </div>
+      <div className="flex justify-end items-start">
+
+        <div className="relative inline-block">
+          <img
+            src="/bgs/bg.webp"
+            alt=""
+            className="
+            w-full
+            h-auto
+            object-contain
+            object-top
+          "
+          />
+          <span className="absolute top-2 left w-6 h-6 border-t border-l border-black" />
+          <span className="absolute bottom-2 left w-6 h-6 border-b border-l border-black" />
+
+        </div>
+        <span className="absolute top-0 left-0 w-6 h-6 border-t border-l border-black/20" />
+        <span className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-black/20" />
+
       </div>
     </section>
   );
