@@ -184,8 +184,6 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
           <span className="absolute bottom-2 left w-6 h-6 border-b border-l border-black" />
 
         </div>
-        <span className="absolute top-0 left-0 w-6 h-6 border-t border-l border-black/20" />
-        <span className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-black/20" />
 
       </div>
     </section>
