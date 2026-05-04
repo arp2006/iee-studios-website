@@ -7,11 +7,34 @@ type HeroProps = {
   lenisRef: React.RefObject<any>;
 };
 
+const arrowRight = {
+  rest: { x: 0 },
+  hover: { x: 5 },
+};
+
+const arrowDiagonal = {
+  rest: { x: 0, y: 0 },
+  hover: { x: 4, y: -4 },
+};
+
+const buttonVariants = {
+  rest: {
+    y: 0,
+    scale: 1,
+    boxShadow: "0 0 0 rgba(0,0,0,0)",
+  },
+  hover: {
+    y: -3,
+    scale: 1.03,
+    boxShadow: "0 12px 30px rgba(0,0,0,0.2)",
+  },
+};
+
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
 export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
   return (
-    <section className="relative min-h-[60vh] grid grid-cols-1 lg:grid-cols-2 items-start">
+    <section className="relative min-h-[65vh] grid grid-cols-1 lg:grid-cols-2 items-start">
 
       <div className="absolute lg:left-[10px] bottom-16 flex flex-col items-center gap-4">
 
@@ -79,26 +102,62 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.25, ease }}
               >
-                <a
+                <motion.a
                   href={CALENDLY}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full bg-black px-6 py-2.5 text-sm text-white hover:bg-black/80 transition"
+                  initial="rest"
+                  animate="rest"
+                  whileHover="hover"
+                  whileTap={{ scale: 0.98 }}
+                  variants={buttonVariants}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="rounded-full bg-black px-6 py-2.5 text-sm text-white flex items-center gap-2"
                 >
-                  Book a call ↗
-                </a>
+                  Book a call
 
-                <button
+                  <motion.span
+                    variants={arrowDiagonal}
+                    transition={{ type: "spring", stiffness: 400, damping: 18 }}
+                    className="inline-block"
+                  >
+                    ↗
+                  </motion.span>
+                </motion.a>
+
+                <motion.button
                   onClick={() =>
                     lenisRef.current?.scrollTo("#work", {
                       offset: -80,
                       duration: 1.8,
                     })
                   }
-                  className="text-sm text-black/60 hover:text-black transition flex items-center gap-2"
+                  initial="rest"
+                  animate="rest"
+                  whileHover="hover"
+                  whileTap={{ scale: 0.97 }}
+                  variants={buttonVariants}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="
+                    text-sm text-black/70
+                    flex items-center gap-2
+                    px-5 py-2.5
+                    rounded-full
+                    border border-black/20
+                    bg-white
+                    cursor-pointer
+                  "
                 >
-                  View Case Studies →
-                </button>
+                  View Case Studies
+
+                  <motion.span
+                    variants={arrowRight}
+                    transition={{ type: "spring", stiffness: 400, damping: 18 }}
+                    className="inline-block"
+                  >
+                    →
+                  </motion.span>
+                </motion.button>
               </motion.div>
             </div>
           </div>
