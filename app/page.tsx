@@ -14,6 +14,7 @@ import Header from "./components/layout/Header";
 import FeaturedWork from "./components/ui/FeaturedWork";
 import StartProjectForm from "./components/ui/StartProjectForm";
 import ProjectOverlay from "./components/ui/ProjectOverlay";
+import { AnimatePresence } from "motion/react";
 
 const CALENDLY = "https://calendly.com/iee-studios/30-mins-meeting";
 
@@ -82,7 +83,10 @@ export default function Home() {
       <div className="pointer-events-none fixed inset-0 z-0">
         <div className="absolute lg:left-[70px] top-0 h-full w-px bg-black/20" />
       </div>
-      <Header CALENDLY={CALENDLY} />
+      <Header
+        CALENDLY={CALENDLY}
+        lenisRef={lenisRef}
+      />
 
       <Script src="https://fast.wistia.com/player.js" strategy="lazyOnload" />
 
@@ -96,12 +100,14 @@ export default function Home() {
         <StartProjectForm />
         <Footer />
       </div>
-      {activeProject && (
-       <ProjectOverlay 
-          project={activeProject}
-          onClose={() => setActiveProject(null)}
-       />
-      )}
+      <AnimatePresence>
+        {activeProject && (
+          <ProjectOverlay
+            project={activeProject}
+            onClose={() => setActiveProject(null)}
+          />
+        )}
+      </AnimatePresence>
     </main>
   );
 }

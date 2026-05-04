@@ -2,11 +2,21 @@
 
 type Props = {
   CALENDLY: string;
+  lenisRef: React.RefObject<any>;
 };
 
-export default function Header({ CALENDLY }: Props) {
+export default function Header({ CALENDLY, lenisRef }: Props) {
+  const scrollTo = (id: string) => {
+    const lenis = lenisRef.current;
+    if (!lenis) return;
+
+    lenis.scrollTo(id);
+  };
+
   return (
-    <header className=" border-b border-black/30 top-6 left-0 w-full z-50">
+    <header className="fixed top-0 left-0 w-full z-50 border-b border-black/30 bg-white/80 backdrop-blur-md">
+
+      <div className="absolute lg:left-[70px] top-0 h-full w-px bg-black/20" />
       <div className="w-full pl-[80px] lg:pl-[120px] pr-6 md:pr-12 lg:pr-20 py-6 flex items-center justify-between">
 
         {/* LEFT — BRAND */}
@@ -35,16 +45,47 @@ export default function Header({ CALENDLY }: Props) {
             text-sm text-black/70
           "
         >
-          <a href="#work" className="hover:text-black transition">
-            Work
+          <a
+            href="#work"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollTo("#work");
+            }}
+            className="hover:text-black transition"
+          >
+            Case Studies
           </a>
-          <a href="#work" className="hover:text-black transition">
-            Featured Work
+
+          <a
+            href="#faq"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollTo("#faq");
+            }}
+            className="hover:text-black transition"
+          >
+            FAQ
           </a>
-          <a href="#start" className="hover:text-black transition">
+
+          <a
+            href="#start"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollTo("#start");
+            }}
+            className="hover:text-black transition"
+          >
             Start
           </a>
-          <a href="#contact" className="hover:text-black transition">
+
+          <a
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollTo("#contact");
+            }}
+            className="hover:text-black transition"
+          >
             Contact
           </a>
         </div>

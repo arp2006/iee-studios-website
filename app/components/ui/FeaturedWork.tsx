@@ -58,7 +58,7 @@ export default function FeaturedWork({
           <div className="flex items-center gap-4">
             <span>02</span>
             <span>/</span>
-            <span>FEATURED WORK</span>
+            <span>Case Studies</span>
           </div>
 
           <button className="hover:text-black transition">
