@@ -56,9 +56,6 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
 
         <div className="relative mt-10 lg:h-[520px] flex items-center">
 
-          {/* BACKGROUND IMAGE */}
-
-
           {/* CONTENT */}
           <div className="relative max-w-[680px] px-2 md:px-5 lg:px-10">
 

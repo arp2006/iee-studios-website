@@ -89,7 +89,7 @@ export default function Home() {
 
       <Script src="https://fast.wistia.com/player.js" strategy="lazyOnload" />
 
-      <div className="relative z-10">
+      <div className="relative z-10 pt-15">
         <Hero
           CALENDLY={CALENDLY}
           lenisRef={lenisRef}
