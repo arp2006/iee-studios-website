@@ -61,7 +61,7 @@ export default function FeaturedWork() {
         <div className="overflow-x-hidden">
           {projects.map((project, i) => (
             <div key={project.id} className="relative">
-              <div className="absolute left-[75px] right-6 md:right-12 lg:right-20 top-0 h-px bg-black/10" />
+              <div className="absolute left-[75px] -right-10 top-0 h-px bg-black/10" />
               <div
                 className="
                 px-6 md:px-12 lg:px-20 py-3
