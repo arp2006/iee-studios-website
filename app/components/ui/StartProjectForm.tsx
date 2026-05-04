@@ -73,7 +73,7 @@ export default function StartProjectForm() {
               p-6 md:p-7
               shadow-[0_10px_30px_rgba(0,0,0,0.03)]
               space-y-5
-              max-w-[520px]
+              max-w-[620px]
             "
           >
             <Field label="Name">
