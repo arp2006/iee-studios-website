@@ -6,7 +6,6 @@ import { HiOutlineMail } from "react-icons/hi";
 import { RiTwitterXFill } from "react-icons/ri";
 import Lenis from "lenis";
 import AsciiBackground from "./components/background/AsciiBackground";
-import HorizontalWork from "./components/ui/HorizontalWork";
 import Footer from "./components/layout/Footer";
 import FAQSection from "./components/ui/FAQSection";
 import Hero from "./components/ui/Hero";
