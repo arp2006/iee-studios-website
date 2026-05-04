@@ -54,7 +54,7 @@ export default function FeaturedWork({
       <div className="w-full lg:pl-[70px] mx-auto ">
 
         {/* HEADER */}
-        <div className="px-6 mpx-2 md:px-5 lg:px-10 py-10 flex items-center justify-between text-sm text-black/60">
+        <div className="px-2 mpx-2 md:px-5 lg:px-10 py-10 flex items-center justify-between text-sm text-black/60">
           <div className="flex items-center gap-4">
             <span>02</span>
             <span>/</span>
@@ -65,6 +65,8 @@ export default function FeaturedWork({
             VIEW ALL WORK →
           </button>
         </div>
+
+        
 
         {/* LIST */}
         <div className="overflow-x-hidden">

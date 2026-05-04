@@ -17,7 +17,7 @@ export default function Header({ CALENDLY, lenisRef }: Props) {
     <header className="fixed top-0 left-0 w-full z-50 border-b border-black/30 bg-white/80 backdrop-blur-md">
 
       <div className="absolute lg:left-[70px] top-0 h-full w-px bg-black/20" />
-      <div className="w-full pl-[80px] lg:pl-[120px] pr-6 md:pr-12 lg:pr-20 py-6 flex items-center justify-between">
+      <div className="w-full pl-6 lg:pl-[120px] pr-6 md:pr-12 lg:pr-20 py-6 flex items-center justify-between">
 
         {/* LEFT — BRAND */}
         <a

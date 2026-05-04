@@ -43,11 +43,11 @@ export default function FAQSection() {
         </div>
 
         {/* TITLE */}
-        <div className="px-6 md:px-12 lg:px-20 mb-12">
+        {/* <div className="px-6 md:px-12 lg:px-20 mb-12">
           <h2 className="text-[clamp(2rem,3vw,3.2rem)] font-medium tracking-[-0.03em]">
             Frequently Asked
           </h2>
-        </div>
+        </div> */}
 
         {/* LIST */}
         <div className="overflow-x-hidden ">
