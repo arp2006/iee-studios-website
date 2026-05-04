@@ -50,7 +50,7 @@ export default function FAQSection() {
         </div>
 
         {/* LIST */}
-        <div>
+        <div className="overflow-x-hidden">
           {faqs.map((faq, i) => (
             <div
               key={i}
