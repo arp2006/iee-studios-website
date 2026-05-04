@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+
 type Project = {
   id: string;
   title: string;
@@ -16,19 +18,54 @@ export default function ProjectOverlay({
   project: Project;
   onClose: () => void;
 }) {
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [onClose]);
+
+  useEffect(() => {
+    const handleMouse = (e: MouseEvent) => {
+      // Mouse button 4 = usually "Back" button
+      if (e.button === 3) {
+        e.preventDefault();
+        onClose();
+      }
+    };
+
+    window.addEventListener("mousedown", handleMouse);
+
+    return () => {
+      window.removeEventListener("mousedown", handleMouse);
+    };
+  }, [onClose]);
+
   return (
     <div className="fixed inset-0 z-50 bg-black text-white flex flex-col">
 
       {/* CLOSE */}
       <button
         onClick={onClose}
-        className="absolute top-6 right-6 text-white/60 hover:text-white"
+        className="
+          absolute top-6 right-6
+          w-8 h-8
+          flex items-center justify-center
+          border border-white/50
+          text-white/70
+          hover:text-white
+          hover:border-white
+          transition
+        "
       >
         ✕
       </button>
 
       {/* VIDEO */}
-      <div className="w-full h-[85vh] flex items-center ">
+      <div className="w-full h-[85vh] flex items-center mt-16">
         <iframe
           src={`https://fast.wistia.net/embed/iframe/${project.videoId}`}
           allow="autoplay; fullscreen"
