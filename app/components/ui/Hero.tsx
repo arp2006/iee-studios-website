@@ -180,8 +180,8 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
             object-top
           "
           />
-          <span className="absolute top-2 left w-6 h-6 border-t border-l border-black" />
-          <span className="absolute bottom-2 left w-6 h-6 border-b border-l border-black" />
+
+          <div className="absolute inset-0 bg-gradient-to-l from-white/0 via-white/10 to-white/100 pointer-events-none" />
 
         </div>
 
