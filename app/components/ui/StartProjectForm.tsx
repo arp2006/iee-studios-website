@@ -48,7 +48,7 @@ export default function StartProjectForm() {
         <div className="px-6 md:px-12 lg:px-20 grid lg:grid-cols-2 gap-20 items-start">
 
           {/* LEFT */}
-          <div className="max-w-[560px]">
+          <div className="relative max-w-[560px]">
             <h2 className="text-[clamp(2.2rem,3vw,3.6rem)] font-semibold leading-[1.05] tracking-[-0.04em]">
               Let’s build
               <br />
@@ -60,6 +60,25 @@ export default function StartProjectForm() {
             <p className="mt-6 text-black/50 text-[15px] leading-[1.7] max-w-[420px]">
               Tell us about your product, launch goals, and creative direction. We’ll shape a film designed to move people.
             </p>
+            <div className="mt-10">
+              <div className="relative max-w-[520px] rounded-xl overflow-hidden">
+
+                <img
+                  src="/images/form.png"
+                  alt="Form preview"
+                  className="
+                    w-full h-auto
+                    object-cover
+                    grayscale
+                    opacity-90
+                  "
+                />
+
+                {/* overlay */}
+                <div className="absolute inset-0 bg-radial from-white/0 via-white/20 to-white/50" />
+
+              </div>
+            </div>
           </div>
 
           {/* FORM */}
@@ -74,6 +93,7 @@ export default function StartProjectForm() {
               shadow-[0_10px_30px_rgba(0,0,0,0.03)]
               space-y-5
               max-w-[620px]
+              min-h-[643px]
             "
           >
             <Field label="Name">
