@@ -13,25 +13,19 @@ import Hero from "./components/ui/Hero";
 import Header from "./components/layout/Header";
 import FeaturedWork from "./components/ui/FeaturedWork";
 import StartProjectForm from "./components/ui/StartProjectForm";
+import ProjectOverlay from "./components/ui/ProjectOverlay";
 
 const CALENDLY = "https://calendly.com/iee-studios/30-mins-meeting";
 
-// const projects = [
-//   { title: "Nebula Launch Film", client: "Nebula", type: "Launch Film", year: "2025", bg: "#e8e8e8", colSpan: "lg:col-span-7", aspect: "16 / 9", wistiaId: "o6f8jxyrss" },
-//   { title: "Signal", client: "Vertex Labs", type: "Brand Campaign", year: "2025", bg: "#dedede", colSpan: "lg:col-span-5", aspect: "4 / 5" },
-//   { title: "Basalt Furniture Launch Film", client: "Basalt", type: "Product Launch Film", year: "2025", bg: "#e2e2e2", colSpan: "lg:col-span-5", aspect: "16 / 9", wistiaId: "s206p4dfom" },
-//   { title: "Construct", client: "Onyx Cloud", type: "Product Reveal", year: "2024", bg: "#d8d8d8", colSpan: "lg:col-span-7", aspect: "16 / 10" },
-//   // { title: "Meridian", client: "Atlas Systems", type: "Brand Story", year: "2024", bg: "#e0e0e0", colSpan: "lg:col-span-8", aspect: "16 / 9" },
-//   // { title: "Epoch", client: "Nova Platform", type: "Launch Spot", year: "2023", bg: "#d4d4d4", colSpan: "lg:col-span-4", aspect: "3 / 4" },
-// ];
+type Project = {
+  id: string;
+  title: string;
+  description: string;
+  year: string;
+  image: string;
+  videoId: string;
+};
 
-
-const projects = [
-  { title: "Nebula Launch Film", client: "Nebula", type: "Launch Film", year: "2025", bg: "#e8e8e8", colSpan: "lg:col-span-7", aspect: "16 / 9", video: "uxp0atu6uo" },
-  { title: "Carekeep Pvt Ltd Launch", client: "Carekeep", type: "Brand Campaign", year: "2025", bg: "#dedede", colSpan: "lg:col-span-5", aspect: "4 / 5", video: "fqvwxkxvlw" },
-  { title: "Basalt Furniture Launch Film", client: "Basalt", type: "Product Launch Film", year: "2025", bg: "#e2e2e2", colSpan: "lg:col-span-5", aspect: "16 / 9", video: "b9xw0zvnzv" },
-  { title: "Omni ID Authologic Pvt Ltd Launch", client: "Omni ID", type: "Brand Campaign", year: "2024", bg: "#d8d8d8", colSpan: "lg:col-span-7", aspect: "16 / 10", video: "gifr74w6l7" },
-];
 
 export default function Home() {
   const lenisRef = useRef<Lenis | null>(null);
@@ -44,6 +38,7 @@ export default function Home() {
     project: ""
   });
   const [isMobile, setIsMobile] = useState(false);
+  const [activeProject, setActiveProject] = useState<Project | null>(null);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -78,49 +73,35 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY;
-
-      setShowNav(y > 300);
-      setSmallNav(y > 850);
-    };
-
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    document.body.style.overflow = activeProject ? "hidden" : "auto";
+  }, [activeProject]);
 
   return (
+
     <main className="relative min-h-screen bg-white text-black">
       <div className="pointer-events-none fixed inset-0 z-0">
         <div className="absolute lg:left-[70px] top-0 h-full w-px bg-black/20" />
       </div>
       <Header CALENDLY={CALENDLY} />
-      
-      <Script src="https://fast.wistia.com/player.js" strategy="lazyOnload" />
-      
-      <div className="relative z-10">
-       
-        {/* <Navbar
-          showNav={showNav}
-          smallNav={smallNav}
-          CALENDLY={CALENDLY}
-          mobile={isMobile}
-        /> */}
 
+      <Script src="https://fast.wistia.com/player.js" strategy="lazyOnload" />
+
+      <div className="relative z-10">
         <Hero
           CALENDLY={CALENDLY}
           lenisRef={lenisRef}
         />
-
-        <FeaturedWork />
-
-
+        <FeaturedWork onProjectClick={setActiveProject} />
         <FAQSection />
-
         <StartProjectForm />
-
         <Footer />
       </div>
+      {activeProject && (
+       <ProjectOverlay 
+          project={activeProject}
+          onClose={() => setActiveProject(null)}
+       />
+      )}
     </main>
   );
 }

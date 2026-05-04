@@ -6,6 +6,7 @@ type Project = {
   description: string;
   year: string;
   image: string;
+  videoId: string
 };
 
 const projects: Project[] = [
@@ -14,7 +15,8 @@ const projects: Project[] = [
     title: "Basalt Furniture",
     description: 'launch film · "verified by design"',
     year: "2026",
-    image: "/thumb1.jpg",
+    image: "thumbnails/thumb1.png",
+    videoId: "b9xw0zvnzv"
   },
   {
     id: "02",
@@ -22,6 +24,7 @@ const projects: Project[] = [
     description: "product launch film · teaser",
     year: "2026",
     image: "/thumb2.jpg",
+    videoId: "fqvwxkxvlw"
   },
   {
     id: "03",
@@ -29,6 +32,7 @@ const projects: Project[] = [
     description: 'launch film · "unused potential"',
     year: "2026",
     image: "/thumb3.jpg",
+    videoId: "uxp0atu6uo"
   },
   {
     id: "04",
@@ -36,10 +40,15 @@ const projects: Project[] = [
     description: "product launch film · verification",
     year: "2026",
     image: "/thumb4.jpg",
+    videoId: "gifr74w6l7"
   },
 ];
 
-export default function FeaturedWork() {
+export default function FeaturedWork({
+  onProjectClick,
+}: {
+  onProjectClick: (project: any) => void;
+}) {
   return (
     <section id="work" className="border-t border-black/30">
       <div className="w-full lg:pl-[70px] mx-auto ">
@@ -63,15 +72,16 @@ export default function FeaturedWork() {
             <div key={project.id} className="relative">
               <div className="absolute left-[75px] -right-10 top-0 h-px bg-black/10" />
               <div
+                onClick={() => onProjectClick(project)}
                 className="
-                px-6 md:px-12 lg:px-20 py-3
-                flex items-center justify-between
-                group
-                hover:bg-black/[0.02]
-                transition
-                hover:translate-x-2
-                cursor-pointer
-              "
+                  px-6 md:px-12 lg:px-20 py-3
+                  flex items-center justify-between
+                  group
+                  hover:bg-black/[0.02]
+                  transition
+                  hover:translate-x-2
+                  cursor-pointer
+                "
               >
                 {/* LEFT */}
                 <div className="flex items-center gap-6 min-w-[400px]">

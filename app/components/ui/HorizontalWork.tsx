@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValueEvent, useScroll, useSpring, useTransform } from "motion/react";
 import Script from "next/script";
-import WistiaPlayer from "./WistiaPlayer";
+import WistiaPlayer from "./ProjectOverlay";
 
 type Project = {
   title: string;
