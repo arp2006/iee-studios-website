@@ -14,7 +14,7 @@ export default function Header({ CALENDLY, lenisRef }: Props) {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 border-b border-black/30 bg-white/80 backdrop-blur-md">
+    <header className="fixed top-0 left-0 w-full z-50 border-b border-black/30 bg-white/85 backdrop-blur-md">
 
       <div className="absolute lg:left-[70px] top-0 h-full w-px bg-black/20" />
       <div className="w-full pl-6 lg:pl-[120px] pr-6 md:pr-12 lg:pr-20 py-6 flex items-center justify-between">
@@ -22,8 +22,11 @@ export default function Header({ CALENDLY, lenisRef }: Props) {
         {/* LEFT — BRAND */}
         <a
           href="#top"
+          onClick={(e) => {
+              e.preventDefault();
+              scrollTo("#top");
+            }}
           className="
-            font-bricolage
             text-[22px] md:text-[26px]
             font-bold
             tracking-[-0.03em]
