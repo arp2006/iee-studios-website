@@ -36,7 +36,7 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
   return (
     <section className="relative min-h-[65vh] grid grid-cols-1 lg:grid-cols-2 items-start">
 
-      <div className="absolute lg:left-[10px] bottom-16 flex flex-col items-center gap-4">
+      <div className="absolute lg:left-[80px] bottom-16 flex flex-col items-center gap-4 ">
 
         {/* LABEL */}
         <div className="rotate-[-90deg]">
@@ -52,7 +52,7 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
 
       </div>
 
-      <div className="lg:pl-[70px]">
+      <div className="lg:pl-[200px]">
 
         <div className="relative mt-10 lg:h-[520px] flex items-center">
 
@@ -166,19 +166,23 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
       </div>
       <div className="flex justify-end items-start">
 
-        <div className="relative inline-block mt-9">
+        <div className="relative inline-block mt-9 mr-[200px]">
           <img
             src="/bgs/bg.webp"
             alt=""
             className="
-            w-full
-            h-auto
-            object-contain
-            object-top
-          "
+              invisible
+              md:visible
+              md:w-full
+              md:h-auto
+              md:object-contain
+              md:object-top
+              md:border-r
+              border-black/0
+            "
           />
 
-          <div className="absolute inset-0 bg-gradient-to-l from-white/0 via-white/10 to-white/100 pointer-events-none" />
+          <div className="absolute inset-0 mt-9 mr-[200px] bg-gradient-to-l from-white/0 via-white/10 to-white/100 pointer-events-none" />
 
         </div>
 

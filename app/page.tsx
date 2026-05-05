@@ -21,9 +21,13 @@ type Project = {
   id: string;
   title: string;
   description: string;
+  summary: string;
   year: string;
   image: string;
   videoId: string;
+  challenge: string;
+  idea: string;
+  deliverables: string[];
 };
 
 
@@ -80,7 +84,8 @@ export default function Home() {
 
     <main className="relative min-h-screen bg-white text-black">
       <div className="pointer-events-none fixed inset-0 z-10">
-        <div className="absolute lg:left-[70px] top-0 h-full w-px bg-black/50 z-10" />
+        <div className="absolute lg:left-[200px] top-0 h-full w-px bg-black/50 z-10" />
+        <div className="absolute lg:right-[200px] top-0 h-full w-px bg-black/50 z-10" />
       </div>
 
       <Header

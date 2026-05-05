@@ -4,43 +4,92 @@ type Project = {
   id: string;
   title: string;
   description: string;
+  summary: string;
   year: string;
   image: string;
-  videoId: string
+  videoId: string;
+  challenge: string;
+  idea: string;
+  deliverables: string[];
 };
-
 const projects: Project[] = [
   {
     id: "01",
     title: "Basalt Furniture",
     description: 'launch film · "verified by design"',
+    summary: "A product film centered on trust, curation, and the value of verified design.",
     year: "2026",
     image: "thumbnails/thumb1.png",
-    videoId: "b9xw0zvnzv"
+    videoId: "b9xw0zvnzv",
+    challenge:
+      "Basalt needed to differentiate itself from generic furniture marketplaces by making its strict verification process feel premium rather than procedural.",
+    idea:
+      "We built a narrative around earned placement—highlighting material detail and controlled pacing to position verification as taste and trust.",
+    deliverables: [
+      "Launch film",
+      "Script direction",
+      "Product narrative",
+      "Social cutdowns",
+    ],
   },
   {
     id: "02",
     title: "Carekeep Launch",
     description: "product launch film · teaser",
+    summary: "A launch and teaser campaign exploring emotional contrast in product workflows.",
     year: "2026",
     image: "/thumb2.jpg",
-    videoId: "fqvwxkxvlw"
+    videoId: "fqvwxkxvlw",
+    challenge:
+      "Carekeep lacked a defined narrative direction and needed a compelling emotional anchor for its product launch.",
+    idea:
+      "We explored multiple creative routes, ultimately focusing on the contrast between chaotic legacy workflows and a calmer, more intuitive system.",
+    deliverables: [
+      "Creative ideation",
+      "Script routes",
+      "Launch film",
+      "Teaser",
+    ],
   },
   {
     id: "03",
     title: "Nebula AI Agents",
     description: 'launch film · "unused potential"',
+    summary:
+      "A narrative-driven launch film focused on the gap between access to AI and real understanding of its potential.",
     year: "2026",
     image: "/thumb3.jpg",
-    videoId: "uxp0atu6uo"
+    videoId: "uxp0atu6uo",
+    challenge:
+      "Nebula needed to promote AI agents without sounding like another AI product pitch. The core insight was that only a small part of the world uses AI meaningfully — and even many users barely touch its full potential.",
+    idea:
+      "We built the story around the gap between access and understanding. Instead of forcing the product into every frame, the film leads with a larger human truth, then naturally positions Nebula Agents as the way to unlock what people are still missing.",
+    deliverables: [
+      "Launch film",
+      "Story strategy",
+      "VO script",
+      "Narrative positioning",
+    ],
   },
   {
     id: "04",
     title: "Omni ID — Authologic",
     description: "product launch film · verification",
+    summary:
+      "A product launch film showing the contrast between chaotic KYC processes and a simplified one-click verification experience.",
     year: "2026",
     image: "/thumb4.jpg",
-    videoId: "gifr74w6l7"
+    videoId: "gifr74w6l7",
+    challenge:
+      "Authologic was launching Omni ID, a one-button verification product designed to remove traditional KYC friction. The challenge was to first show the chaos already built into verification, then make the simplicity of Omni ID feel obvious.",
+    idea:
+      "The film opens inside the noise: fragmented KYC methods, repeated checks, broken flows, and user frustration. The second act strips that chaos away, using a single-button reveal to show how Omni ID turns verification into one clear action.",
+    deliverables: [
+      "Product launch film",
+      "Chaos-to-clarity concept",
+      "VO script",
+      "Teaser cuts",
+    ],
   },
 ];
 
@@ -50,8 +99,8 @@ export default function FeaturedWork({
   onProjectClick: (project: any) => void;
 }) {
   return (
-    <section id="work" className="border-t border-black/50">
-      <div className="w-full lg:pl-[70px] mx-auto ">
+    <section id="work" className="border-t border-black/50 ">
+      <div className="w-full lg:pl-[200px] mx-auto  pr-[200px]">
 
         {/* HEADER */}
         <div className="px-2 mpx-2 md:px-5 lg:px-10 py-10 flex items-center justify-between text-sm text-black/60">
@@ -61,18 +110,18 @@ export default function FeaturedWork({
             <span>Case Studies</span>
           </div>
 
-          <button className="hover:text-black transition">
+          {/* <button className="hover:text-black transition  pr-50">
             VIEW ALL WORK →
-          </button>
+          </button> */}
         </div>
 
-        
+
 
         {/* LIST */}
         <div className="overflow-x-hidden py-5">
           {projects.map((project, i) => (
-            <div key={project.id} className="relative">
-              <div className="absolute left-[0px] -right-10 top-0 h-px bg-black/20" />
+            <div key={project.id} className="relative md:pr-15">
+              <div className="absolute top-0 left-0 h-px w-full bg-black/20" />
               <div
                 onClick={() => onProjectClick(project)}
                 className="

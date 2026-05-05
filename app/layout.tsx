@@ -13,12 +13,6 @@ export const metadata: Metadata = {
     "IEE Studios produces and directs exclusive launch films and advertisements for tech and SaaS companies.",
 };
 
-// const bricolage = Bricolage_Grotesque({
-//   subsets: ["latin"],
-//   weight: ["400", "500", "600"],
-//   variable: "--font-bricolage",
-// });
-
 export default function RootLayout({
   children,
 }: Readonly<{

@@ -32,8 +32,8 @@ export default function FAQSection() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="border-t border-black/50">
-      <div className="w-full lg:pl-[70px] mx-auto">
+    <section id="faq" className="border-t border-black/50 ">
+      <div className="w-full lg:pl-[200px] mx-auto pr-[200px]">
 
         {/* HEADER (aligned with system) */}
         <div className="px-2 md:px-5 lg:px-10 py-10 flex items-center gap-4 text-sm text-black/60">
@@ -54,8 +54,9 @@ export default function FAQSection() {
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className="px-6 md:px-12 lg:px-20 border-t border-black/20 transition hover:translate-x-2"
+              className="relative px-6 md:px-12 lg:px-20 transition hover:translate-x-2"
             >
+              <div className="absolute top-0 left-0 h-px w-full bg-black/20" />
               <button
                 onClick={() =>
                   setOpenFaq(openFaq === i ? null : i)
@@ -66,7 +67,7 @@ export default function FAQSection() {
                   {faq.question}
                 </span>
 
-                <span className="text-black/30 text-xl">
+                <span className="text-black/30 text-xl md:pr-15">
                   {openFaq === i ? "−" : "+"}
                 </span>
               </button>
