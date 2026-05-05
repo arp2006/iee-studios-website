@@ -166,7 +166,7 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
       </div>
       <div className="flex justify-end items-start">
 
-        <div className="relative inline-block mt-9 mr-[150px]">
+        <div className="relative inline-block mt-9 md:mr-[150px]">
           <img
             src="/bgs/bg.webp"
             alt=""
@@ -182,7 +182,7 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
             "
           />
 
-          <div className="absolute inset-0 mt-9 mr-[150px] bg-gradient-to-l from-white/0 via-white/10 to-white/100 pointer-events-none" />
+          <div className="absolute inset-0 mt-9 md:mr-[150px] bg-gradient-to-l from-white/0 via-white/10 to-white/100 pointer-events-none" />
 
         </div>
 

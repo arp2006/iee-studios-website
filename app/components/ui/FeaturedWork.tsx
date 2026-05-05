@@ -19,7 +19,7 @@ const projects: Project[] = [
     description: 'launch film · "verified by design"',
     summary: "A product film centered on trust, curation, and the value of verified design.",
     year: "2026",
-    image: "thumbnails/thumb1.png",
+    image: "thumbnails/1.png",
     videoId: "b9xw0zvnzv",
     challenge:
       "Basalt needed to differentiate itself from generic furniture marketplaces by making its strict verification process feel premium rather than procedural.",
@@ -38,7 +38,7 @@ const projects: Project[] = [
     description: "product launch film · teaser",
     summary: "A launch and teaser campaign exploring emotional contrast in product workflows.",
     year: "2026",
-    image: "/thumb2.jpg",
+    image: "thumbnails/2.png",
     videoId: "fqvwxkxvlw",
     challenge:
       "Carekeep lacked a defined narrative direction and needed a compelling emotional anchor for its product launch.",
@@ -58,7 +58,7 @@ const projects: Project[] = [
     summary:
       "A narrative-driven launch film focused on the gap between access to AI and real understanding of its potential.",
     year: "2026",
-    image: "/thumb3.jpg",
+    image: "thumbnails/3.png",
     videoId: "uxp0atu6uo",
     challenge:
       "Nebula needed to promote AI agents without sounding like another AI product pitch. The core insight was that only a small part of the world uses AI meaningfully — and even many users barely touch its full potential.",
@@ -78,7 +78,7 @@ const projects: Project[] = [
     summary:
       "A product launch film showing the contrast between chaotic KYC processes and a simplified one-click verification experience.",
     year: "2026",
-    image: "/thumb4.jpg",
+    image: "thumbnails/4.png",
     videoId: "gifr74w6l7",
     challenge:
       "Authologic was launching Omni ID, a one-button verification product designed to remove traditional KYC friction. The challenge was to first show the chaos already built into verification, then make the simplicity of Omni ID feel obvious.",
@@ -100,7 +100,7 @@ export default function FeaturedWork({
 }) {
   return (
     <section id="work" className="border-t border-black/50 ">
-      <div className="w-full lg:pl-[150px] mx-auto  pr-[150px]">
+      <div className="w-full lg:pl-[150px] mx-auto  md:pr-[150px]">
 
         {/* HEADER */}
         <div className="px-2 mpx-2 md:px-5 lg:px-10 py-10 flex items-center justify-between text-sm text-black/60">
@@ -142,12 +142,15 @@ export default function FeaturedWork({
                   </span>
 
                   {/* THUMB */}
-                  <div className="w-[80px] h-[50px] bg-black/10 overflow-hidden">
+                  <div className="w-[120px] h-[70px] bg-black/10 overflow-hidden">
                     <img
                       src={project.image}
                       alt={project.title}
                       className="w-full h-full object-cover"
                     />
+                    {/* src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover object-[10%_50%] scale-500 translate-x-[180%] -translate-y-[150%]" */}
                   </div>
 
                   {/* TITLE */}
