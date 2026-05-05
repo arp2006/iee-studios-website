@@ -41,4 +41,9 @@ next-env.d.ts
 temp.*
 test.*
 
+thumb1.png
+thumb2.png
+thumb3.png
+thumb4.png
+
 .ENV

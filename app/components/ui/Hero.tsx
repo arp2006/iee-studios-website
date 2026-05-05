@@ -171,14 +171,13 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
             src="/bgs/bg.webp"
             alt=""
             className="
-              invisible
-              md:visible
-              md:w-full
-              md:h-auto
-              md:object-contain
-              md:object-top
-              md:border-r
-              border-black/0
+              hidden md:block
+              w-full
+              h-[550]
+              object-cover
+              object-top
+              border-r
+              border-black/50
             "
           />
 

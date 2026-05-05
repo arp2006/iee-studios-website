@@ -63,11 +63,12 @@ export default function StartProjectForm() {
           bg-[url('/images/form.png')]
           bg-cover z-0
           bg-center md:mr-[150px]
+          
         "
         />
 
         {/* OVERLAY */}
-        <div className="absolute inset-0 bg-white/90 backdrop-blur-sm left-[0px] md:left-[150px] md:mr-[150px] border-x border-black/50" />
+        <div className="absolute inset-0 backdrop-blur-xs left-[0px] md:left-[150px] md:mr-[150px] border-x border-black/50" />
 
         {/* ACTUAL CONTENT */}
         <div className="relative z-10">
@@ -83,15 +84,15 @@ export default function StartProjectForm() {
 
             {/* LEFT */}
             <div className="relative max-w-[560px]">
-              <h2 className="text-[clamp(2.2rem,3vw,3.6rem)] font-semibold leading-[1.05] tracking-[-0.04em]">
+              <h2 className="text-[clamp(2.2rem,3vw,3.6rem)] text-white font-semibold leading-[1.05] tracking-[-0.04em]">
                 Let’s build
                 <br />
-                <span className="text-black/55">
+                <span className="text-white">
                   something memorable.
                 </span>
               </h2>
 
-              <p className="mt-6 text-black/60 text-[15px] leading-[1.7] max-w-[420px]">
+              <p className="mt-6 text-white/80 text-[15px] leading-[1.7] max-w-[420px]">
                 Tell us about your product, launch goals, and creative direction. We’ll shape a film designed to move people.
               </p>
 
