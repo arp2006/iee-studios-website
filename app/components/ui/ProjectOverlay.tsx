@@ -104,7 +104,7 @@ export default function ProjectOverlay({
           transition={{ duration: 0.4, ease: "easeOut" }}
           className="
             w-full h-[60vh]
-            md:w-3/4 md:h-[90vh]
+            md:w-3/5 md:h-[80vh]
             relative mt-12 md:ml-12
           "
         >
@@ -119,7 +119,7 @@ export default function ProjectOverlay({
         <div
           className="
             w-full
-            md:w-1/4
+            md:w-2/5
             md:h-full
             overflow-y-auto
           "

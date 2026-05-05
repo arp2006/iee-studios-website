@@ -33,7 +33,7 @@ export default function FAQSection() {
 
   return (
     <section id="faq" className="border-t border-black/50 ">
-      <div className="w-full lg:pl-[200px] mx-auto pr-[200px]">
+      <div className="w-full lg:pl-[150px] mx-auto pr-[150px]">
 
         {/* HEADER (aligned with system) */}
         <div className="px-2 md:px-5 lg:px-10 py-10 flex items-center gap-4 text-sm text-black/60">

@@ -7,7 +7,7 @@ import { RiTwitterXFill } from "react-icons/ri";
 export default function Footer() {
   return (
     <footer id="contact" className="border-t border-black/50 md:pr-40">
-      <div className="w-full lg:pl-[200px] mx-auto ">
+      <div className="w-full lg:pl-[150px] mx-auto ">
 
         {/* HEADER (keeps system consistent) */}
         <div className="px-2 md:px-5 lg:px-10  py-10 flex items-center gap-4 text-sm text-black/60">

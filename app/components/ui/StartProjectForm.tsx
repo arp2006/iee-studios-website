@@ -54,20 +54,20 @@ export default function StartProjectForm() {
 
   return (
     <section id="start" className=" border-t border-black/50">
-      <div className=" relative w-full lg:pl-[200px] mx-auto py-5 overflow-hidden  pr-[200px]">
+      <div className=" relative w-full lg:pl-[150px] mx-auto py-5 overflow-hidden  pr-[150px]">
         <div
           className="
           absolute top-0 bottom-0 right-0
           left-[0px]
-          md:left-[200px]
+          md:left-[150px]
           bg-[url('/images/form.png')]
           bg-cover z-0
-          bg-center  mr-[200px]
+          bg-center  mr-[150px]
         "
         />
 
         {/* OVERLAY */}
-        <div className="absolute inset-0 bg-white/90 backdrop-blur-sm left-[0px] md:left-[200px]  mr-[200px] border-x border-black/50" />
+        <div className="absolute inset-0 bg-white/90 backdrop-blur-sm left-[0px] md:left-[150px]  mr-[150px] border-x border-black/50" />
 
         {/* ACTUAL CONTENT */}
         <div className="relative z-10">

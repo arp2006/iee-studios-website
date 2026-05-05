@@ -100,7 +100,7 @@ export default function FeaturedWork({
 }) {
   return (
     <section id="work" className="border-t border-black/50 ">
-      <div className="w-full lg:pl-[200px] mx-auto  pr-[200px]">
+      <div className="w-full lg:pl-[150px] mx-auto  pr-[150px]">
 
         {/* HEADER */}
         <div className="px-2 mpx-2 md:px-5 lg:px-10 py-10 flex items-center justify-between text-sm text-black/60">
