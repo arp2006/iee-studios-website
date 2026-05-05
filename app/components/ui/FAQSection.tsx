@@ -32,8 +32,8 @@ export default function FAQSection() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="border-t border-black/30">
-      <div className="w-full lg:pl-[70px] mx-auto ">
+    <section id="faq" className="border-t border-black/50">
+      <div className="w-full lg:pl-[70px] mx-auto">
 
         {/* HEADER (aligned with system) */}
         <div className="px-2 md:px-5 lg:px-10 py-10 flex items-center gap-4 text-sm text-black/60">
@@ -50,11 +50,11 @@ export default function FAQSection() {
         </div> */}
 
         {/* LIST */}
-        <div className="overflow-x-hidden ">
+        <div className="overflow-x-hidden py-5">
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className="px-6 md:px-12 lg:px-20 border-t border-black/10 transition hover:translate-x-2"
+              className="px-6 md:px-12 lg:px-20 border-t border-black/20 transition hover:translate-x-2"
             >
               <button
                 onClick={() =>

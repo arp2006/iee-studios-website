@@ -140,7 +140,7 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
                     flex items-center gap-2
                     px-5 py-2.5
                     rounded-full
-                    border border-black/20
+                    border border-black/50
                     bg-white
                     cursor-pointer
                   "
@@ -166,7 +166,7 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
       </div>
       <div className="flex justify-end items-start">
 
-        <div className="relative inline-block">
+        <div className="relative inline-block mt-9">
           <img
             src="/bgs/bg.webp"
             alt=""

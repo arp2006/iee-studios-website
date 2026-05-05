@@ -50,7 +50,7 @@ export default function FeaturedWork({
   onProjectClick: (project: any) => void;
 }) {
   return (
-    <section id="work" className="border-t border-black/30">
+    <section id="work" className="border-t border-black/50">
       <div className="w-full lg:pl-[70px] mx-auto ">
 
         {/* HEADER */}
@@ -69,17 +69,16 @@ export default function FeaturedWork({
         
 
         {/* LIST */}
-        <div className="overflow-x-hidden">
+        <div className="overflow-x-hidden py-5">
           {projects.map((project, i) => (
             <div key={project.id} className="relative">
-              <div className="absolute left-[75px] -right-10 top-0 h-px bg-black/10" />
+              <div className="absolute left-[0px] -right-10 top-0 h-px bg-black/20" />
               <div
                 onClick={() => onProjectClick(project)}
                 className="
                   px-6 md:px-12 lg:px-20 py-3
                   flex items-center justify-between
                   group
-                  hover:bg-black/[0.02]
                   transition
                   hover:translate-x-2
                   cursor-pointer
