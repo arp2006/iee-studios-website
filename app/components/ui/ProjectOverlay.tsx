@@ -85,7 +85,7 @@ export default function ProjectOverlay({
           hover:text-black
           hover:border-black
           transition
-          z-1
+          z-1 mt-3 md:mr-10
         "
       >
         ✕
@@ -95,7 +95,7 @@ export default function ProjectOverlay({
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.35, ease: "easeOut" }}
-        className="flex flex-row h-full"
+        className="flex md:flex-row flex-col h-full"
       >
         {/* VIDEO */}
         <motion.div
@@ -105,7 +105,7 @@ export default function ProjectOverlay({
           className="
             w-full h-[60vh]
             md:w-3/4 md:h-[90vh]
-            relative mt-12 ml-12
+            relative mt-12 md:ml-12
           "
         >
           <iframe
