@@ -1,8 +1,28 @@
 "use client";
 
+import { motion } from "motion/react";
+
 type Props = {
   CALENDLY: string;
   lenisRef: React.RefObject<any>;
+};
+
+const buttonVariants = {
+  rest: {
+    y: 0,
+    scale: 1,
+    boxShadow: "0 0 0 rgba(0,0,0,0)",
+  },
+  hover: {
+    y: -3,
+    scale: 1.03,
+    boxShadow: "0 12px 30px rgba(0,0,0,0.2)",
+  },
+};
+
+const arrowDiagonal = {
+  rest: { x: 0, y: 0 },
+  hover: { x: 3, y: -3 },
 };
 
 export default function Header({ CALENDLY, lenisRef }: Props) {
@@ -23,9 +43,9 @@ export default function Header({ CALENDLY, lenisRef }: Props) {
         <a
           href="#top"
           onClick={(e) => {
-              e.preventDefault();
-              scrollTo("#top");
-            }}
+            e.preventDefault();
+            scrollTo("#top");
+          }}
           className="
             text-[22px] md:text-[26px]
             font-bold
@@ -94,14 +114,28 @@ export default function Header({ CALENDLY, lenisRef }: Props) {
         </div>
 
         {/* RIGHT — CTA */}
-        <a
+        <motion.a
           href={CALENDLY}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-full bg-black px-6 py-2.5 text-sm text-white hover:bg-black/80 transition"
+          initial="rest"
+          animate="rest"
+          whileHover="hover"
+          whileTap={{ scale: 0.98 }}
+          variants={buttonVariants}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          className="rounded-full bg-black px-6 py-2.5 text-sm text-white flex items-center gap-2"
         >
-          Book a call ↗
-        </a>
+          Book a call
+
+          <motion.span
+            variants={arrowDiagonal}
+            transition={{ type: "spring", stiffness: 400, damping: 18 }}
+            className="inline-block"
+          >
+            ↗
+          </motion.span>
+        </motion.a>
 
       </div>
     </header>

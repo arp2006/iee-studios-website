@@ -1,6 +1,25 @@
 "use client";
 
+import { motion } from "motion/react";
 import { useMemo, useState } from "react";
+
+const arrowRight = {
+  rest: { x: 0 },
+  hover: { x: 5 },
+};
+
+const buttonVariants = {
+  rest: {
+    y: 0,
+    scale: 1,
+    boxShadow: "0 0 0 rgba(0,0,0,0)",
+  },
+  hover: {
+    y: -3,
+    scale: 1.03,
+    boxShadow: "0 12px 30px rgba(0,0,0,0.2)",
+  },
+};
 
 export default function StartProjectForm() {
   const [form, setForm] = useState({
@@ -67,12 +86,12 @@ export default function StartProjectForm() {
               <h2 className="text-[clamp(2.2rem,3vw,3.6rem)] font-semibold leading-[1.05] tracking-[-0.04em]">
                 Let’s build
                 <br />
-                <span className="text-black/45">
+                <span className="text-black/55">
                   something memorable.
                 </span>
               </h2>
 
-              <p className="mt-6 text-black/50 text-[15px] leading-[1.7] max-w-[420px]">
+              <p className="mt-6 text-black/60 text-[15px] leading-[1.7] max-w-[420px]">
                 Tell us about your product, launch goals, and creative direction. We’ll shape a film designed to move people.
               </p>
 
@@ -150,19 +169,54 @@ export default function StartProjectForm() {
               </Field>
 
               {/* BUTTON */}
-              <div className="pt-2">
-                <button
+              <div className="pt-2 relative group">
+                {/* TOOLTIP */}
+                {!isValid && (
+                  <div
+                    className="
+                    absolute left-1/2 -translate-x-1/2 -top-12
+                    rounded-full bg-black px-3 py-1.5
+                    text-[11px] text-white
+                    opacity-0 scale-95
+                    transition-all
+                    group-hover:opacity-100
+                    group-hover:scale-100
+                    whitespace-nowrap
+                  "
+                  >
+                    Complete inquiry to continue
+                  </div>
+                )}
+
+                {/* BUTTON */}
+                <motion.button
                   type="submit"
                   disabled={!isValid}
+                  initial="rest"
+                  animate="rest"
+                  whileHover={isValid ? "hover" : "rest"}
+                  whileTap={isValid ? { scale: 0.97 } : {}}
+                  variants={buttonVariants}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   className={`
-                  w-full rounded-full py-3 text-sm transition
-                  ${isValid
-                      ? "bg-black text-white hover:bg-black/85"
+                    w-full rounded-full py-3 text-sm transition
+                    flex items-center justify-center gap-2
+                    ${isValid
+                      ? "bg-black text-white hover:bg-black/85 cursor-pointer"
                       : "bg-black/10 text-black/30 cursor-not-allowed"}
-                `}
+                  `}
                 >
-                  Send Inquiry →
-                </button>
+                  Send Inquiry
+
+                  {/* optional animated arrow */}
+                  <motion.span
+                    variants={arrowRight}
+                    transition={{ type: "spring", stiffness: 400, damping: 18 }}
+                    className="inline-block"
+                  >
+                    →
+                  </motion.span>
+                </motion.button>
               </div>
             </form>
           </div>

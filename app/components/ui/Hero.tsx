@@ -14,7 +14,7 @@ const arrowRight = {
 
 const arrowDiagonal = {
   rest: { x: 0, y: 0 },
-  hover: { x: 4, y: -4 },
+  hover: { x: 3, y: -3 },
 };
 
 const buttonVariants = {
