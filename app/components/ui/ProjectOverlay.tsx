@@ -42,22 +42,6 @@ export default function ProjectOverlay({
   }, [onClose]);
 
   useEffect(() => {
-    const handleMouse = (e: MouseEvent) => {
-      // Mouse button 4 = usually "Back" button
-      if (e.button === 3) {
-        e.preventDefault();
-        onClose();
-      }
-    };
-
-    window.addEventListener("mousedown", handleMouse);
-
-    return () => {
-      window.removeEventListener("mousedown", handleMouse);
-    };
-  }, [onClose]);
-
-  useEffect(() => {
     const t = setTimeout(() => {
       setShowVideo(true);
     }, 250);
@@ -65,123 +49,154 @@ export default function ProjectOverlay({
     return () => clearTimeout(t);
   }, [project.videoId]);
 
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="fixed inset-0 z-50 bg-white text-black flex flex-col"
+      onWheelCapture={(e) => e.stopPropagation()}
+      onTouchMove={(e) => e.stopPropagation()}
+      className="fixed z-500 bg-white text-black left-0 right-0 top-0 bottom-0 md:left-[151px] md:right-[151px] md:top-[95px] bottom-0 overflow-y-auto"
     >
       {/* CLOSE */}
-      <button
-        onClick={onClose}
-        className="
-          absolute top-1 right-1
-          w-8 h-8
-          flex items-center justify-center
-          border border-black/30
-          text-black/50
-          hover:text-black
-          hover:border-black
-          transition
-          z-1 mt-3 md:mr-10
-        "
-      >
-        ✕
-      </button>
 
       <motion.div
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.35, ease: "easeOut" }}
-        className="flex md:flex-row flex-col h-full"
+        className="
+          w-full
+          min-h-full
+          px-6 md:px-10
+          flex flex-col items-center
+        "
       >
-        {/* VIDEO */}
         <motion.div
           initial={{ opacity: 0, filter: "blur(69px)" }}
           animate={{ opacity: showVideo ? 1 : 0, filter: "blur(0px)" }}
           transition={{ duration: 0.4, ease: "easeOut" }}
           className="
-            w-full h-[60vh]
-            md:w-3/5 md:h-[80vh]
-            relative mt-12 md:ml-12
+            w-full md:w-[85%]
+            relative
+            mt-5
           "
         >
-          <iframe
-            src={`https://fast.wistia.net/embed/iframe/${project.videoId}`}
-            allow="autoplay; fullscreen"
-            className="absolute inset-0 w-full h-full"
-          />
+          <button
+            onClick={onClose}
+            className="
+              absolute right-0
+              w-10 h-10
+              flex items-center justify-center
+              border border-black/20
+              bg-white/80
+              backdrop-blur-md
+              text-black/50
+              hover:text-black
+              hover:border-black
+              transition
+              z-50
+            "
+          >
+            ✕
+          </button>
+          <div className="w-[full] md:h-full">
+            <div className="w-full pb-5 space-y-12">
+              {/* HEADER */}
+
+
+              {/* CONTENT GRID */}
+              <div className="grid md:grid-cols-2 gap-16">
+                <div className="space-y-5">
+                  <h2 className="text-3xl font-semibold">
+                    {project.title}
+                  </h2>
+                  <p className="text-sm text-black/40">
+                    {project.year} · {project.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="relative md:w-full aspect-video">
+            <iframe
+              src={`https://fast.wistia.net/embed/iframe/${project.videoId}`}
+              allow="autoplay; fullscreen"
+              className="absolute inset-0 w-full h-full"
+            />
+          </div>
         </motion.div>
 
         {/* TEXT */}
-        <div
-          className="
-            w-full
-            md:w-2/5
-            md:h-full
-            overflow-y-auto
-          "
-        >
-          <div className="max-w-2xl px-6 md:px-12 py-12 space-y-12">
+        <div className="w-full md:w-[85%] md:h-full">
+          <div className="w-full py-12 space-y-12">
             {/* HEADER */}
-            <div className="space-y-2">
-              <h2 className="text-3xl font-semibold">
-                {project.title}
-              </h2>
-              <p className="text-sm text-black/40">
-                {project.year} · {project.description}
-              </p>
-            </div>
 
-            {/* SUMMARY */}
-            <div className="max-w-2xl">
-              <h3 className="text-xs uppercase tracking-wider text-black/40 mb-3">
-                Summary
-              </h3>
-              <p className="text-black/70 leading-relaxed">
-                {project.summary}
-              </p>
-            </div>
 
-            {/* GRID: Challenge / Idea */}
-            <div className="grid md:grid-cols-2 gap-10">
-              <div>
-                <h3 className="text-xs uppercase tracking-wider text-black/40 mb-3">
-                  Challenge
-                </h3>
-                <p className="text-black/70 leading-relaxed">
-                  {project.challenge}
-                </p>
+            {/* CONTENT GRID */}
+            <div className="grid md:grid-cols-2 gap-16">
+              <div className="space-y-10">
+
+                {/* SUMMARY */}
+                <div className="max-w-2xl">
+                  <h3 className="text-xs uppercase tracking-wider text-black/40 mb-3">
+                    Summary
+                  </h3>
+                  <p className="text-black/70 leading-relaxed max-w-xl">
+                    {project.summary}
+                  </p>
+                </div>
+                {/* LEFT : DELIVERABLES */}
+                <div>
+                  <h3 className="text-xs uppercase tracking-wider text-black/40 mb-4">
+                    Deliverables
+                  </h3>
+
+                  <div className="flex flex-wrap gap-3">
+                    {project.deliverables.map((item, i) => (
+                      <span
+                        key={i}
+                        className="px-3 py-1.5 text-sm border border-black/20 rounded-full text-black/70"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
 
-              <div>
-                <h3 className="text-xs uppercase tracking-wider text-black/40 mb-3">
-                  Idea
-                </h3>
-                <p className="text-black/70 leading-relaxed">
-                  {project.idea}
-                </p>
-              </div>
-            </div>
 
-            {/* DELIVERABLES */}
-            <div>
-              <h3 className="text-xs uppercase tracking-wider text-black/40 mb-4">
-                Deliverables
-              </h3>
 
-              <div className="flex flex-wrap gap-3">
-                {project.deliverables.map((item, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1.5 text-sm border border-black/20 rounded-full text-black/70"
-                  >
-                    {item}
-                  </span>
-                ))}
+              {/* RIGHT : CHALLENGE + IDEA */}
+              <div className="space-y-10">
+                <div>
+                  <h3 className="text-xs uppercase tracking-wider text-black/40 mb-3">
+                    Challenge
+                  </h3>
+                  <p className="text-black/70 leading-relaxed max-w-xl">
+                    {project.challenge}
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xs uppercase tracking-wider text-black/40 mb-3">
+                    Idea
+                  </h3>
+                  <p className="text-black/70 leading-relaxed max-w-xl">
+                    {project.idea}
+                  </p>
+                </div>
               </div>
+
             </div>
           </div>
         </div>

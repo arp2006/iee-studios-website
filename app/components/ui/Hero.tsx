@@ -166,7 +166,7 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
       </div>
       <div className="flex justify-end items-start">
 
-        <div className="relative inline-block mt-9 md:mr-[150px]">
+        <div className="relative inline-block mt-9 pr-[1px] md:mr-[150px]">
           <img
             src="/bgs/bg.webp"
             alt=""
@@ -176,7 +176,6 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
               h-[550]
               object-cover
               object-top
-              border-r
               border-black/50
             "
           />
