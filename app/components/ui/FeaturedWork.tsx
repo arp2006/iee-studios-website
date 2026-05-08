@@ -125,7 +125,7 @@ export default function FeaturedWork({
               <div
                 onClick={() => onProjectClick(project)}
                 className="
-                  px-12 lg:px-20 py-3
+                  px-6 md:px-12 lg:px-20 py-3
                   flex items-center justify-between
                   group
                   transition

@@ -54,7 +54,7 @@ export default function FAQSection() {
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className="relative px-12 lg:px-20 transition hover:translate-x-2"
+              className="relative px-6 md:px-12 lg:px-20 transition hover:translate-x-2"
             >
               <div className="absolute top-0 left-0 h-px w-full bg-black/20" />
               <button
