@@ -36,7 +36,7 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
   return (
     <section className="relative min-h-[65vh] grid grid-cols-1 lg:grid-cols-2 items-start">
 
-      <div className="absolute lg:left-[80px] bottom-16 flex flex-col items-center gap-4 ">
+      <div className="absolute left-[40px] bottom-[10px] lg:left-[80px] bottom-16 flex flex-col items-center gap-4 z-10">
 
         {/* LABEL */}
         <div className="rotate-[-90deg]">
@@ -57,7 +57,7 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
         <div className="relative mt-10 lg:h-[520px] flex items-center">
 
           {/* CONTENT */}
-          <div className="relative max-w-[680px] px-2 md:px-5 lg:px-10">
+          <div className="relative max-w-[680px] px-10">
 
             <div className="flex items-center gap-5 text-sm text-black/50 mb-15">
               <span>01</span>
@@ -65,7 +65,7 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
               <span>LAUNCH FILMS</span>
             </div>
 
-            <div className="max-w-[680px] px-6 md:px-5 lg:px-9">
+            <div className="max-w-[680px] px-6 md:px-9">
               <motion.h1
                 className="text-[clamp(2.4rem,4vw,4.6rem)] font-semibold leading-[1.05] tracking-[-0.03em]"
                 initial={{ opacity: 0, y: 30 }}
@@ -166,7 +166,7 @@ export default function Hero({ CALENDLY, lenisRef }: HeroProps) {
       </div>
       <div className="flex justify-end items-start">
 
-        <div className="relative inline-block mt-9 pr-[1px] md:mr-[150px]">
+        <div className="relative inline-block mt-9 pr-[1px] lg:mr-[150px]">
           <img
             src="/bgs/bg.webp"
             alt=""

@@ -100,10 +100,10 @@ export default function FeaturedWork({
 }) {
   return (
     <section id="work" className="border-t border-black/50 ">
-      <div className="w-full lg:pl-[150px] mx-auto  md:pr-[150px]">
+      <div className="w-full lg:pl-[150px] mx-auto  lg:pr-[150px]">
 
         {/* HEADER */}
-        <div className="px-2 mpx-2 md:px-5 lg:px-10 py-10 flex items-center justify-between text-sm text-black/60">
+        <div className="px-10 py-10 flex items-center gap-4 text-sm text-black/60">
           <div className="flex items-center gap-4">
             <span>02</span>
             <span>/</span>
@@ -125,7 +125,7 @@ export default function FeaturedWork({
               <div
                 onClick={() => onProjectClick(project)}
                 className="
-                  px-6 md:px-12 lg:px-20 py-3
+                  px-12 lg:px-20 py-3
                   flex items-center justify-between
                   group
                   transition
@@ -160,7 +160,7 @@ export default function FeaturedWork({
                 </div>
 
                 {/* CENTER */}
-                <div className="hidden md:block text-black/50 text-sm">
+                <div className="hidden lg:block text-black/50 text-sm">
                   {project.description}
                 </div>
 

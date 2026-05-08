@@ -59,21 +59,21 @@ export default function StartProjectForm() {
           className="
           absolute top-0 bottom-0 right-0
           left-[0px]
-          md:left-[150px]
+          lg:left-[150px]
           bg-[url('/images/form.png')]
           bg-cover z-0
-          bg-center md:mr-[150px]
+          bg-center lg:mr-[150px]
           
         "
         />
 
         {/* OVERLAY */}
-        <div className="absolute inset-0 backdrop-blur-xs left-[0px] md:left-[150px] md:mr-[150px] border-x border-black/50" />
+        <div className="absolute inset-0 backdrop-blur-xs left-[0px] lg:left-[150px] lg:mr-[150px] lg:border-x border-black/50" />
 
         {/* ACTUAL CONTENT */}
         <div className="relative z-10">
           {/* HEADER */}
-          <div className="px-2 md:px-5 lg:px-10 py-10 flex items-center gap-4 text-sm text-black/60">
+          <div className="px-10 py-10 flex items-center gap-4 text-sm text-white/60">
             <span>04</span>
             <span>/</span>
             <span>START A PROJECT</span>

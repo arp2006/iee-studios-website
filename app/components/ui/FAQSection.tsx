@@ -33,10 +33,10 @@ export default function FAQSection() {
 
   return (
     <section id="faq" className="border-t border-black/50 ">
-      <div className="w-full lg:pl-[150px] mx-auto md:pr-[150px]">
+      <div className="w-full lg:pl-[150px] mx-auto lg:pr-[150px]">
 
         {/* HEADER (aligned with system) */}
-        <div className="px-2 md:px-5 lg:px-10 py-10 flex items-center gap-4 text-sm text-black/60">
+        <div className="px-10 py-10 flex items-center gap-4 text-sm text-black/60">
           <span>03</span>
           <span>/</span>
           <span>FAQ</span>
@@ -54,7 +54,7 @@ export default function FAQSection() {
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className="relative px-6 md:px-12 lg:px-20 transition hover:translate-x-2"
+              className="relative px-12 lg:px-20 transition hover:translate-x-2"
             >
               <div className="absolute top-0 left-0 h-px w-full bg-black/20" />
               <button

@@ -10,7 +10,7 @@ export default function Footer() {
       <div className="w-full lg:pl-[150px] mx-auto ">
 
         {/* HEADER (keeps system consistent) */}
-        <div className="px-2 md:px-5 lg:px-10  py-10 flex items-center gap-4 text-sm text-black/60">
+        <div className="px-10  py-10 flex items-center gap-4 text-sm text-black/60">
           <span>05</span>
           <span>/</span>
           <span>CONTACT</span>
